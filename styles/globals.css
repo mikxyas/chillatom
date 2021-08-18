@@ -17,3 +17,45 @@ body{
     width: 100%;
     pointer-events: none;
 }
+.profile-pic{
+    display:flex;
+    align-items:center;
+    /* margin-left:11px; */
+    cursor:pointer;
+    /* background:red; */
+    /* padding-top:.2em; */
+}
+.profile-pic img{
+    border-radius:6px;
+    /* margin-top:.2em; */
+}
+
+
+    .dropdown{
+        position: absolute;
+        transition: .05s;
+        right: 0;
+        height: fit-content;
+        width: 20em;
+        margin-top: 1em;
+        border-radius: 6px;
+        visibility: hidden;
+        padding: 2em 2em;
+        background-color: white;
+        
+    }
+    .show-dropdown{
+        visibility: visible;
+    }
+    
+    .dropdown-item{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .dropdown-input-cont{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+    }
