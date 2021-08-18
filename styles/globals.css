@@ -1,16 +1,19 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body{
+    background-image: url('../public/sam.jpg');
+    background-size: cover;
 }
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
+.aqua-effect::before{
+    content: "";
+    background: linear-gradient(rgba(255, 255, 255, 0.247) 0%, rgba(0, 0, 0, 0) 100%);
+    border-radius: 5px;
+    height: 50%;
+    left: 0%;
+    position: absolute;
+    top: 0px;
+    transition: all ease .3s;
+    width: 100%;
+    pointer-events: none;
 }
