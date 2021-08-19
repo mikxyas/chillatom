@@ -72,3 +72,14 @@
         z-index: 3 !important; 
         /* Fix this */
     }
+
+.yt-player{
+    height: 100%;
+    width: 100%;
+}    
+.yt-player iframe{
+    height: 286px;
+    width: 535px;
+    border-radius: 6px;
+}
+

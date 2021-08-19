@@ -9,7 +9,7 @@ const Header:React.FC = () => {
     const [session, loading] = useSession();
     return(
         <nav className='flex justify-center mt-4'>
-            <div className='bg-white bg-opacity-10 bg-clip-padding backdrop-filter backdrop-blur-md shadow-lg backdrop-saturate-150  border-none flex justify-end items-center w-1/2 h-14 p-2 rounded aqua-effect'>
+            <div className='bg-white bg-opacity-10 bg-clip-padding backdrop-filter backdrop-blur-md shadow-lg backdrop-saturate-150  border-none flex justify-end items-center w-2/5 h-14 p-2 rounded aqua-effect'>
             {loading
                 ?<Button name='Loading...'/>
                 :<>
