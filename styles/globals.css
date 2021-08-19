@@ -1,10 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body{
-    background-image: url('../public/sam.jpg');
-    background-size: cover;
-}
+
+
+/* .aqua-effect{
+    box-shadow: inset 0 13px 15px rgba(255,255,255,0.5), 0 3px 5px rgba(0,0,0,0.2), 0 10px 13px rgba(0,0,0,0.1);
+
+} */
 .aqua-effect::before{
     content: "";
     background: linear-gradient(rgba(255, 255, 255, 0.247) 0%, rgba(0, 0, 0, 0) 100%);
@@ -32,6 +34,7 @@ body{
 
 
     .dropdown{
+        z-index: 3;
         position: absolute;
         transition: .05s;
         right: 0;
@@ -58,4 +61,14 @@ body{
         flex-direction: column;
         justify-content: flex-end;
         align-items: center;
+    }
+    .bg-img img{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+    }
+    nav{
+        z-index: 3 !important; 
+        /* Fix this */
     }

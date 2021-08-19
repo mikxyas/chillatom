@@ -6,6 +6,7 @@ module.exports = {
   },
   variants: {
     extend: {},
+    fontSize: ['responsive','hover'],
   },
   plugins: [],
 }
