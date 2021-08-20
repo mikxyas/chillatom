@@ -1,18 +1,12 @@
 import Button from "./Button";
 import { useState } from "react";
+import Dropdown from "./Dropdown";
 
 const Settings:React.FC = () => {
     const [show,setShow] = useState(false);
     return(
         <>
-            <div className="dropdown-cont">
-                <div onClick={() => setShow(!show)}><Button name='Settings'/></div>
-                <div className={show ?'show-dropdown dropdown':'dropdown' }>
-                <div className='dropdown-item'>
-                    <h1>hi</h1>
-                </div>
-                </div>
-            </div>
+            <Dropdown show={show} dropdownContent={<div className='dropdown-item  w-72 p-2'><h1>hi</h1></div>} main={<div onClick={() => setShow(!show)}><Button name='Settings'/></div>}/>
         </>
     )
 }
