@@ -10,7 +10,19 @@
 .aqua-effect::before{
     content: "";
     background: linear-gradient(rgba(255, 255, 255, 0.247) 0%, rgba(0, 0, 0, 0) 100%);
-    border-radius: 5px;
+    border-radius: 20px;
+    height: 50%;
+    left: 0%;
+    position: absolute;
+    top: 0px;
+    transition: all ease .3s;
+    width: 100%;
+    pointer-events: none;
+}
+nav .aqua-effect::before{
+    content: "";
+    background: linear-gradient(rgba(255, 255, 255, 0.247) 0%, rgba(0, 0, 0, 0) 100%);
+    border-radius: 6px;
     height: 50%;
     left: 0%;
     position: absolute;
@@ -80,6 +92,6 @@
 .yt-player iframe{
     height: 286px;
     width: 535px;
-    border-radius: 6px;
+    border-radius: 20px;
 }
 

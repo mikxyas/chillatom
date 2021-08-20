@@ -3,9 +3,9 @@ import Button from "./Button"
 
 const Pomodoro:React.FC = () => {
 
-    const[minutes, setMinutes] = useState(1)
+    const[minutes, setMinutes] = useState(25)
     const[seconds, setSeconds] = useState(0)
-    const[breakMinutes, setBreakMinutes] = useState(1)
+    const[breakMinutes, setBreakMinutes] = useState(5)
     const[breakSeconds, setBreakSeconds] = useState(0)
     const[startTimer, setStartTimer] = useState(false)
     const[breakTime, setBreakTime] = useState(false)
@@ -61,7 +61,7 @@ const Pomodoro:React.FC = () => {
                     setSeconds(handleTime().seconds)
                     if(minutes === 0 && seconds === 0){
                         setBreakTime(true)
-                        setMinutes(2)
+                        setMinutes(25)
                         setSeconds(0)
                         return 0;
                     };
@@ -89,9 +89,9 @@ const Pomodoro:React.FC = () => {
     return(
         <div className='flex items-center h-full justify-center flex-col'>
             
-            {breakTime 
-            ?<div className='text-white font-bold text-6xl mb-5'>{breakMinutes + ':' + breakSeconds} break</div> 
-            :<div className='text-white font-bold text-6xl mb-5'>{minutes + ':' + seconds}</div>}
+            {!breakTime 
+            ?<div className='text-white font-bold text-8xl mb-5'>{minutes === 0 ? "00" :minutes <10 ? "0" + minutes:minutes}:{seconds === 0 ? "00" : seconds < 10 ? "0" + seconds : seconds} </div> 
+            :<div className='text-white font-bold text-8xl mb-5'>{breakMinutes === 0 ? "00" :breakMinutes <10 ? "0" + breakMinutes:breakMinutes}:{breakSeconds === 0 ? "00" : breakSeconds < 10 ? "0" + breakSeconds : breakSeconds} Break</div>}
             <div onClick={() => setStartTimer(!startTimer)}><Button name={startTimer === true ? "Stop" :"Start"}/></div>
             
         </div>
