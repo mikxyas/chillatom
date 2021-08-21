@@ -5,14 +5,17 @@ import Image from 'next/image'
 import Settings from './Settings'
 import Profile from './Profile'
 import { useUserStore } from '../global-stores/useUserStore'
+import { useCollectionStore } from '../global-stores/useCollectionStore'
 
 const Header:React.FC = () => {
     const fetchuser = useUserStore(state => state.fetch)
+    const fetchCollection = useCollectionStore(state => state.fetchCollection)
     const [session, loading] = useSession();
     useEffect(() => {
         fetchuser()
-        console.log('fetching user')
-    },[session])
+        fetchCollection()
+        console.log('fetching everything')
+    },[])
     return(
         <nav className='flex justify-center mt-4'>
             <div className='bg-white z-10 bg-opacity-10 bg-clip-padding backdrop-filter backdrop-blur-md shadow-lg backdrop-saturate-150  border-none flex justify-end items-center w-2/5 h-14 p-2 rounded aqua-effect'>

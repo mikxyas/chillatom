@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
+import { useUserStore } from "../global-stores/useUserStore";
 import Button from "./Button"
 
 const Pomodoro:React.FC = () => {
-
-    const[minutes, setMinutes] = useState(25)
+    const user = useUserStore(state => state.user)
+    const[minutes, setMinutes] = useState(user.focusFor)
     const[seconds, setSeconds] = useState(0)
-    const[breakMinutes, setBreakMinutes] = useState(5)
+    const[breakMinutes, setBreakMinutes] = useState(user.ChillFor)
     const[breakSeconds, setBreakSeconds] = useState(0)
     const[startTimer, setStartTimer] = useState(false)
     const[breakTime, setBreakTime] = useState(false)
@@ -61,7 +62,7 @@ const Pomodoro:React.FC = () => {
                     setSeconds(handleTime().seconds)
                     if(minutes === 0 && seconds === 0){
                         setBreakTime(true)
-                        setMinutes(25)
+                        setMinutes(user.focusFor)
                         setSeconds(0)
                         return 0;
                     };
@@ -76,7 +77,8 @@ const Pomodoro:React.FC = () => {
                 setBreakSeconds(handleTime().breakSeconds)
                 if(breakMinutes === 0 && breakSeconds === 0) {
                     setBreakTime(false)
-                    setBreakMinutes(5)
+                    setBreakMinutes(user.chillFor)
+                    setBreakSeconds(0)
                 }
                 if(breakSeconds === 0 && breakMinutes !== 0){
                     setBreakMinutes(breakMinutes - 1)

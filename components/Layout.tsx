@@ -9,7 +9,7 @@ type Props = {
 const Layout: React.FC<Props> = (props) => (
     <div>
             <div className='bg-img'>
-                <Image layout='fill' src='/sam.jpg'/>
+                <Image layout='fill' src='/cool.jpg'/>
             </div>
             <Header/>
             <div>

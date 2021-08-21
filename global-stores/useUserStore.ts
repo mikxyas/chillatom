@@ -1,7 +1,16 @@
 import create from "zustand";
 
+type UserProp = {
+    name:string,
+    collection:object,
+    Fortnight:object,
+    listeningTo: string,
+    focusingOn: string,
+    focusFor:string,
+    chillFor:string,
+}
 type User = {
-    user:object;
+    user:UserProp[];
     fetch:any;
     userFetched:boolean,
     loading:boolean,
@@ -9,7 +18,7 @@ type User = {
 }
 
 export const useUserStore = create<User>(set => ({
-    user:{},
+    user:[],
     userFetched:false,
     loading:false,
     error:false,
