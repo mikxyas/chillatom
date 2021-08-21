@@ -1,14 +1,13 @@
 import { useState } from "react";
 import Button from "./Button"
 import { useTestStore } from "../global-stores/useTestStore";
+import { useUserStore } from "../global-stores/useUserStore";
 const Player: React.FC = () => {
     const [showForm, setShowForm] = useState(false);
     const addBears = useTestStore(state => state.increasePop)
-
+    const user = useUserStore(state => state.user)
     return(
         <div className='flex'>
-                    <div onClick={addBears}><Button name='click me'/></div>
-
             {!showForm
                 ?<div className='yt-player'>
                     <iframe  src="https://www.youtube.com/embed/videoseries?list=PLhlhVLoA0A46r0N8ZMsULWHuIahhjpBny" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
