@@ -55,7 +55,6 @@ const Player: React.FC = () => {
             setTitle('')
             setUrl('')
             setShowForm(false)
-            fetchCollection()
         }else{
             url_id = video_id
             const body = {
@@ -70,7 +69,6 @@ const Player: React.FC = () => {
             setTitle('')
             setUrl('')
             setShowForm(false)
-            fetchCollection()
         }
     }
 

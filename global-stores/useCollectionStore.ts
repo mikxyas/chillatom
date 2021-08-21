@@ -1,6 +1,6 @@
 import create from 'zustand'
 
-export const useCollectionStore = create(set => ({
+export const useCollectionStore = create((set, get) => ({
     collection:[],
     loading_collection:false,
     error:false,
@@ -22,6 +22,8 @@ export const useCollectionStore = create(set => ({
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
             })
+            const addedData = await response.json()
+            set({collectoin: get().collection.push(addedData)})
         }
         catch(e){
             set({error:true})
