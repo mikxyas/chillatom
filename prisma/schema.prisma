@@ -16,6 +16,7 @@ model Collection {
   video_id        String?
   isPlaylist      Boolean
   isLivestream    Boolean
+  isVideo         Boolean @default(false)
   creator         User?   @relation(fields: [creatorId], references: [id])
   creatorId       Int?
 }

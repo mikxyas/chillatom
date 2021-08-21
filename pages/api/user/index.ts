@@ -10,8 +10,6 @@ export default async function handler (req: NextApiRequest, res: NextApiResponse
         },
         select:{
             name:true,
-            collection:true,
-            Fortnight:true,
             image:true,
             listeningTo:true,
             focusFor:true,

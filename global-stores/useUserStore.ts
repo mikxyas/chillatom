@@ -15,6 +15,7 @@ type User = {
     userFetched:boolean,
     loading:boolean,
     error:boolean,
+    updateListeningTo:any,
 }
 
 export const useUserStore = create<User>(set => ({
@@ -30,6 +31,20 @@ export const useUserStore = create<User>(set => ({
         }
         catch(e){
             set({error:true, userFetched:false, loading:false})
+        }
+    },
+    updateListeningTo: async(video_id) => {
+        try{
+            const response = await fetch('http://localhost:3000/api/user/update-listen',{
+                method:'PUT',
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({video_id:video_id})
+            })
+            const res = await response.json();
+            set({user: res})
+        }
+        catch(e){
+            console.log(e)
         }
     }
 }))
