@@ -8,6 +8,7 @@ const Player: React.FC = () => {
     const [showForm, setShowForm] = useState(false);
     const collection = useCollectionStore(state => state.collection)
     const fetchCollection = useCollectionStore(state => state.fetchCollection)
+    const deleteCollection = useCollectionStore(state => state.deleteCollection)
     const createColl = useCollectionStore(state => state.AddCollection)
     const listeningTo = useUserStore(state => state.user.listeningTo)
     const updateListeningTo = useUserStore(state => state.updateListeningTo)
@@ -40,7 +41,7 @@ const Player: React.FC = () => {
 
     const CreateCollection = async() => {
         let url_id
-
+        console.log('hi')
         if(isPlaylist){
             url_id = playlist_id
             const body = {
@@ -50,12 +51,12 @@ const Player: React.FC = () => {
                 isVideo:isVideo,
                 isPlaylist:isPlaylist,
             }
-            await createColl(body)
-            await updateListeningTo(url_id)
+            createColl(body)
+            updateListeningTo(url_id)
             setTitle('')
             setUrl('')
             setShowForm(false)
-        }else{
+        }else if(isVideo || isLivestream){
             url_id = video_id
             const body = {
                 title:title,
@@ -64,12 +65,16 @@ const Player: React.FC = () => {
                 isVideo:isVideo,
                 isPlaylist:isPlaylist,
             }
-            await createColl(body)
-            await updateListeningTo(url_id)
+            createColl(body)
+            updateListeningTo(url_id)
             setTitle('')
             setUrl('')
             setShowForm(false)
         }
+    }
+
+    const deleteCollectionfunc = async(id, key) => {
+        deleteCollection(id, key)
     }
 
     useEffect(() => {
@@ -104,7 +109,7 @@ const Player: React.FC = () => {
                             <p onClick={videoSelected} className='cursor-pointer  flex justify-center items-center  text-xl  text-white font-semibold'>Video <i className={isVideo? 'gg-check ml-1 bg-blue-400' :'gg-check ml-1 bg-white' }/></p> 
                         </div>
                         <div  className='w-2/3 mt-2'>
-                        <button disabled={pidValid || vidValid === false && title ==='' ?true :false} onClick={() => CreateCollection()} className='w-max rounded-md bg-white  bg-opacity-20 shadow-sm font-bold text-white pl-5 pr-5 pt-2 pb-2'>
+                        <button disabled={pidValid || vidValid === true && title !='' ?false :true} onClick={() => CreateCollection()} className='w-max rounded-md bg-white  bg-opacity-20 shadow-sm font-bold text-white pl-5 pr-5 pt-2 pb-2'>
                             Create
                         </button>
                         </div>
@@ -112,15 +117,16 @@ const Player: React.FC = () => {
                 </div>
             }
             
-            <div className='w-full h-full '>
-                <div className='flex flex-col items-start ml-4 h-auto w-full p-2 rounded-3xl'>
-                    {collection.map(col => (
-                        <div onClick={() => updateListeningTo(col.video_id)} className='cursor-pointer flex p-0 mt-2  items-center text-2xl justify-center font-black text-white '>
+            <div className='w-full h-full'>
+                <div className='flex flex-col items-start ml-4 h-60 overflow-auto  overscroll-x-none w-full p-2'>
+                    {collection.map((col, key) => (
+                        <div key={key} className='cursor-pointer flex p-0 mb-2  items-center text-2xl justify-center font-black text-white '>
                             {listeningTo === col.video_id
-                                ?<i className='mr-3 gg-music'/>
+                                ?<i className=' mr-48 mt-1 gg-music absolute '/>
                                 :null
                             }
-                            <p>{col.title}</p>
+                            <p  onClick={() => updateListeningTo(col.video_id)}>{col.title.length > 10 ?<>{col.title.substring(0,10) + '...'}</> :<>{col.title}</>}</p>
+                            <i onClick={() => deleteCollectionfunc(col.id, key)} className="gg-trash ml-2"></i>
                         </div>
                     ))}
                 </div>

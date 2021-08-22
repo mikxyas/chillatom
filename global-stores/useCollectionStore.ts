@@ -23,10 +23,28 @@ export const useCollectionStore = create((set, get) => ({
                 body: JSON.stringify(body)
             })
             const addedData = await response.json()
-            set({collectoin: get().collection.push(addedData)})
+            set((state) => ({
+                collection: [...state.collection, {...addedData}]
+            }))
         }
         catch(e){
             set({error:true})
+            console.log(e)
+        }
+    },
+    deleteCollection: async(id, key) => {
+        try{
+            const response = await fetch(`http://localhost:3000/api/collection/${id}`, {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" },
+              });
+            const res = await response.json();
+            set((state) => ({
+                collection: state.collection.filter((coll, id) => id !== key)
+            }))
+        }
+        catch(e){
+            console.log(e)
         }
     }
 }))

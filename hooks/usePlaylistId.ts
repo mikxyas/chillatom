@@ -11,6 +11,8 @@ export const usePlaylistId = (url) => {
         if(idPosition != -1){
             setpidValid(true)
             setplaylistId(URL.substring(idPosition +5,url_length))
+            console.log(playlistId)
+
         }else{
             setpidValid(false)
         }
@@ -29,6 +31,7 @@ export const useVideoID = (url) => {
         if(idPosition != -1){
             setvidValid(true)
             setVideoId(URL.substring(idPosition +2,url_length))
+            console.log(videoId)
         }else{
             setvidValid(false)
         }
