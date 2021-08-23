@@ -95,7 +95,12 @@ const Pomodoro:React.FC = () => {
             ?<div className='text-white font-bold text-8xl mb-5'>{minutes === 0 ? "00" :minutes <10 ? "0" + minutes:minutes}:{seconds === 0 ? "00" : seconds < 10 ? "0" + seconds : seconds} </div> 
             :<div className='text-white font-bold text-8xl mb-5'>{breakMinutes === 0 ? "00" :breakMinutes <10 ? "0" + breakMinutes:breakMinutes}:{breakSeconds === 0 ? "00" : breakSeconds < 10 ? "0" + breakSeconds : breakSeconds} Break</div>}
             <div onClick={() => setStartTimer(!startTimer)}><Button name={startTimer === true ? "Stop" :"Start"}/></div>
-            
+            <div className='mt-4'>
+                <div className='text-white font-bold text-center'>
+                    <p>Session 1</p>
+                    <p>Study hard. And smart</p>
+                </div>
+            </div>
         </div>
     )
 }

@@ -122,11 +122,14 @@ const Player: React.FC = () => {
                     {collection.map((col, key) => (
                         <div key={key} className='cursor-pointer flex p-0 mb-2  items-center text-2xl justify-center font-black text-white '>
                             {listeningTo === col.video_id
-                                ?<i className=' mr-48 mt-1 gg-music absolute '/>
-                                :null
+                                ?<><i className='mr-1 mt-1 gg-music'/>
+                                    <p  onClick={() => updateListeningTo(col.video_id)}>{col.title.length > 10 ?<>{col.title.substring(0,10) + '..'}</> :<>{col.title}</>}</p>
+                                    <i onClick={() => deleteCollectionfunc(col.id, key)} className="gg-trash ml-2"></i>
+                                </>
+                                :<><p  onClick={() => updateListeningTo(col.video_id)}>{col.title.length > 10 ?<>{col.title.substring(0,10) + '...'}</> :<>{col.title}</>}</p>
+                                <i onClick={() => deleteCollectionfunc(col.id, key)} className="gg-trash ml-2"></i></>
                             }
-                            <p  onClick={() => updateListeningTo(col.video_id)}>{col.title.length > 10 ?<>{col.title.substring(0,10) + '...'}</> :<>{col.title}</>}</p>
-                            <i onClick={() => deleteCollectionfunc(col.id, key)} className="gg-trash ml-2"></i>
+                            
                         </div>
                     ))}
                 </div>
