@@ -5,7 +5,6 @@ import { useUserStore } from "../global-stores/useUserStore";
 const Habit:React.FC = () => {
     const user = useUserStore(state => state.user)
     const loading = useUserStore(state => state.loading)
-    console.log(user)
     return(
         <div className='flex justify-center items-center flex-col h-full mt-1'>
             <div className='cursor-pointer habit-card transition ease-in duration-100 transform hover:-translate-y-1 font-bold text-4xl text-white mb-1 p-2 rounded-lg flex items-center justify-center'><Image width={50} height={50} src='/study.png'/><p className='w-full text-right'>Study</p></div>
