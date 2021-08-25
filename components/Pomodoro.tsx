@@ -13,6 +13,8 @@ const Pomodoro:React.FC = () => {
     const[startTimer, setStartTimer] = useState(false)
     const[breakTime, setBreakTime] = useState(false)
 
+    const [sessionCounter, setSessionCouter] = useState(0)
+
     const handleTime = () => {
         // handle focus time
         if(breakTime === false){
@@ -81,6 +83,7 @@ const Pomodoro:React.FC = () => {
                     setBreakTime(false)
                     setBreakMinutes(user.chillFor)
                     setBreakSeconds(0)
+                    setSessionCouter(sessionCounter + 1)
                 }
                 if(breakSeconds === 0 && breakMinutes !== 0){
                     setBreakMinutes(breakMinutes - 1)
@@ -92,6 +95,8 @@ const Pomodoro:React.FC = () => {
     useEffect(() => {
         setMinutes(focusTime)
         setBreakMinutes(chillTime)
+        setSeconds(0)
+        setBreakSeconds(0)
         return () => {
         }
     }, [chillTime, focusTime])
@@ -105,7 +110,7 @@ const Pomodoro:React.FC = () => {
             <div onClick={() => setStartTimer(!startTimer)}><Button name={startTimer === true ? "Stop" :"Start"}/></div>
             <div className='mt-4'>
                 <div className='text-white font-bold text-center'>
-                    <p>Session 1</p>
+                    <p>Sessions {sessionCounter}</p>
                     <p>Study hard, and smart</p>
                 </div>
             </div>

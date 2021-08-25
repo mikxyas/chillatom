@@ -2,6 +2,7 @@ import Button from "./Button";
 import { useState } from "react";
 import Dropdown from "./Dropdown";
 import { useUserStore } from "../global-stores/useUserStore";
+import { useEffect } from "react";
 
 const Settings:React.FC = () => {
     const [show,setShow] = useState(false);
@@ -17,7 +18,13 @@ const Settings:React.FC = () => {
         }
         updatePomoTime(object)
     }
-
+    useEffect(() => {
+        setFocusFor(user.focusFor)
+        setChillFor(user.chillFor)
+        return () => {
+          
+        }
+    }, [user])
     return(
         <>
             <Dropdown show={show} dropdownContent={

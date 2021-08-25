@@ -120,14 +120,18 @@ const Player: React.FC = () => {
             <div className='w-full h-full'>
                 <div className='flex flex-col items-start ml-4 h-60 overflow-auto  overscroll-x-none w-full p-2'>
                     {collection.map((col, key) => (
-                        <div key={key} className='cursor-pointer flex p-0 mb-2  items-center text-2xl justify-center font-black text-white '>
+                        <div key={key} className='cursor-pointer flex p-0 mb-1  items-center w-full text-2xl justify-center font-black text-white '>
                             {listeningTo === col.video_id
-                                ?<><i className='mr-1 mt-1 gg-music'/>
+                                ?<><i className='mr-2 mt-1 gg-music'/>
+                                <div className='flex justify-between w-full items-center'>
                                     <p  onClick={() => updateListeningTo(col.video_id)}>{col.title.length > 10 ?<>{col.title.substring(0,10) + '..'}</> :<>{col.title}</>}</p>
-                                    <i onClick={() => deleteCollectionfunc(col.id, key)} className="gg-trash ml-2"></i>
+                                    <i onClick={() => deleteCollectionfunc(col.id, key)} className="gg-trash mr-2"></i>
+                                </div>
                                 </>
-                                :<><p  onClick={() => updateListeningTo(col.video_id)}>{col.title.length > 10 ?<>{col.title.substring(0,10) + '...'}</> :<>{col.title}</>}</p>
-                                <i onClick={() => deleteCollectionfunc(col.id, key)} className="gg-trash ml-2"></i></>
+                                :<div className='flex justify-between w-full items-center'>
+                                    <p  onClick={() => updateListeningTo(col.video_id)}>{col.title.length > 11 ?<>{col.title.substring(0,11) + '...'}</> :<>{col.title}</>}</p>
+                                    <i onClick={() => deleteCollectionfunc(col.id, key)} className="gg-trash mr-2"></i>
+                                </div>
                             }
                             
                         </div>

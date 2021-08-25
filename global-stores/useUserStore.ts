@@ -17,6 +17,7 @@ type User = {
     error:boolean,
     updateListeningTo:any,
     updatePomoTime:any,
+    updateFocusingOn: any,
 }
 
 export const useUserStore = create<User>(set => ({
@@ -52,6 +53,20 @@ export const useUserStore = create<User>(set => ({
         try{    
 
                 const response = await fetch('http://localhost:3000/api/user/update-pomo',{
+                    method: 'POST',
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify(body)
+                })
+                const updatedData = await response.json()
+                set({user:updatedData})
+        }
+        catch(e){
+            console.log(e)
+        }
+    },
+    updateFocusingOn: async(body) => {
+        try{    
+                const response = await fetch('http://localhost:3000/api/user/update-focusing',{
                     method: 'POST',
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify(body)
