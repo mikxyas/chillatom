@@ -6,17 +6,22 @@ import Settings from './Settings'
 import Profile from './Profile'
 import { useUserStore } from '../global-stores/useUserStore'
 import { useCollectionStore } from '../global-stores/useCollectionStore'
+import { usePopup } from '../global-stores/usePopup'
 
 const Header:React.FC = () => {
     const fetchuser = useUserStore(state => state.fetch)
     const fetchCollection = useCollectionStore(state => state.fetchCollection)
     const [session, loading] = useSession();
+    const toggleSettings = usePopup(state => state.toggleSettings)
+
     useEffect(() => {
         fetchuser()
         fetchCollection()
         console.log('fetching everything')
     },[])
     return(
+        <>
+        <Settings/>
         <nav className='flex justify-center mt-4'>
             <div className='bg-white z-10 bg-opacity-10 bg-clip-padding backdrop-filter backdrop-blur-md shadow-lg backdrop-saturate-150  border-none flex justify-end items-center w-2/5 h-14 p-2 rounded aqua-effect'>
             {loading
@@ -30,8 +35,8 @@ const Header:React.FC = () => {
                         <div className='ml-2'>
                             <Button name='Work rate'/>
                         </div>
-                        <div className='ml-2'>
-                            <Settings/>
+                        <div onClick={toggleSettings} className='ml-2'>
+                        <Button name='Settings'/>
                         </div>
                         <Profile image={session.user.image}/>
                         
@@ -40,7 +45,7 @@ const Header:React.FC = () => {
             }
             </div>
         </nav>
-        
+        </>
     )
 }
 

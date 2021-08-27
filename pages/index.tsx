@@ -9,7 +9,7 @@ export default function Home() {
   const userFetched = useUserStore(state => state.userFetched) 
   const error = useUserStore(state => state.error) 
   return (
-    <div className='flex mt-10 justify-center items-center'>
+    <div className='flex mt-7 justify-center items-center'>
       {loading===false && userFetched === true
         ? <div className='grid grid-cols-3 gap-4 w-2/5'>
             <div className=''><Card content={<Habit/>}/></div>
