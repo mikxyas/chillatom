@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useFortnightStore } from "../global-stores/useFortnightStore";
 import { useUserStore } from "../global-stores/useUserStore";
 import Button from "./Button"
 
@@ -14,6 +15,34 @@ const Pomodoro:React.FC = () => {
     const[breakTime, setBreakTime] = useState(false)
 
     const [sessionCounter, setSessionCouter] = useState(0)
+
+    const fetchFortnight = useFortnightStore(state => state.fetchFortnight)
+    const getLatestFort = useFortnightStore(state => state.getLatestFort)
+    const addFort = useFortnightStore(state => state.createFortnight)
+    const updateFort = useFortnightStore(state => state.updateFort)
+    const latestfortnight = useFortnightStore(state => state.latestFortnight)
+    const createFortnight = useFortnightStore(state => state.createFortnight)
+
+    const handleFortnight = () => {
+        let fortnightData = {
+            focusedMin: user.focusFor, action:'',id:latestfortnight.id
+        }
+        if(user.focusingOn === 'studying'){
+            fortnightData.action = 'studiedFor'
+        } if(user.focusingOn === 'reading'){
+            fortnightData.action = 'readFor'
+        } if(user.focusingOn === 'studying'){
+            fortnightData.action = 'studiedFor'
+        } if(user.focusingOn === 'drawing'){
+            fortnightData.action = 'drewFor'
+        }
+
+        if(createFortnight){
+            addFort(fortnightData)
+        }else{
+            updateFort(fortnightData)
+        }
+    }
 
     const handleTime = () => {
         // handle focus time
@@ -56,18 +85,18 @@ const Pomodoro:React.FC = () => {
             }
         }
     }
-   console.log(minutes + ':' + seconds)
-   console.log('break ' + breakMinutes +':'+breakSeconds)
+
     useEffect(() => {
         // Function to count the focus minutes
         if(startTimer === true && breakTime === false){
             const timer = setTimeout(() => {
-              
                     setSeconds(handleTime().seconds)
                     if(minutes === 0 && seconds === 0){
                         setBreakTime(true)
                         setMinutes(user.focusFor)
                         setSeconds(0)
+                        setSessionCouter(sessionCounter + 1)
+                        handleFortnight()
                         return 0;
                     };
                     if(seconds === 0 && minutes !== 0){
@@ -83,7 +112,6 @@ const Pomodoro:React.FC = () => {
                     setBreakTime(false)
                     setBreakMinutes(user.chillFor)
                     setBreakSeconds(0)
-                    setSessionCouter(sessionCounter + 1)
                 }
                 if(breakSeconds === 0 && breakMinutes !== 0){
                     setBreakMinutes(breakMinutes - 1)
@@ -101,6 +129,11 @@ const Pomodoro:React.FC = () => {
         }
     }, [chillTime, focusTime])
 
+    useEffect(() => {
+        fetchFortnight()
+        getLatestFort()
+    },[])
+
     return(
         <div className='flex items-center h-full justify-center flex-col'>
             
@@ -111,7 +144,11 @@ const Pomodoro:React.FC = () => {
             <div className='mt-4'>
                 <div className='text-white font-bold text-center'>
                     <p>Sessions {sessionCounter}</p>
-                    <p>Study hard, and smart</p>
+                    {!breakTime
+                        ?<p>Study hard, and smart</p>
+                        :<p>Time to chill</p>
+                    }
+                    
                 </div>
             </div>
         </div>
