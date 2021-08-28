@@ -14,6 +14,8 @@ const Header:React.FC = () => {
     const [session, loading] = useSession();
     const toggleSettings = usePopup(state => state.toggleSettings)
 
+    const user = useUserStore(state=> state.user)
+
     useEffect(() => {
         fetchuser()
         fetchCollection()
@@ -23,7 +25,7 @@ const Header:React.FC = () => {
         <>
         <Settings/>
         <nav className='flex justify-center mt-4'>
-            <div className='bg-white z-10 bg-opacity-10 bg-clip-padding backdrop-filter backdrop-blur-md shadow-lg backdrop-saturate-150  border-none flex justify-end items-center w-2/5 h-14 p-2 rounded aqua-effect'>
+            <div className={` ${user.theme} z-10 bg-opacity-20 bg-clip-padding backdrop-filter backdrop-blur-md shadow-lg backdrop-saturate-150  border-none flex justify-end items-center w-2/5 h-14 p-2 rounded aqua-effect`}>
             {loading
                 ?<Button name='Loading...'/>
                 :<>

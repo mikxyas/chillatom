@@ -48,6 +48,7 @@ model User {
   focusingOn    String @default("studying")
   focusFor      Int @default(25)
   chillFor      Int @default(5)
+  theme         String @default("bg-white")
   @@map(name: "users")
 }
 
