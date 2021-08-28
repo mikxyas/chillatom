@@ -7,6 +7,7 @@ export const useFortnightStore = create((set, get) => ({
     fortnights:{},
     latestFortnight:{},
     createFort:true,
+    sumFort:{},
     fetchFortnight: async FetchFort => {
         try{
             const response = await fetch('http://localhost:3000/api/fortnight')
@@ -66,6 +67,17 @@ export const useFortnightStore = create((set, get) => ({
             set({latestFortnight: res})
         } catch (e) {
             console.log(e)
+        }
+    },
+    getSumFort: async getdata => {
+        try{
+            const response = await fetch('http://localhost:3000/api/fortnight/aggregate-habit')
+            const data = await response.json()
+            set({sumFort: data._sum})
+            console.log(data._sum)
+        }
+        catch(e){
+            set({error:true, userFetched:false, loading:false})
         }
     }
 }))

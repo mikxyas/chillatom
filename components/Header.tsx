@@ -7,6 +7,7 @@ import Profile from './Profile'
 import { useUserStore } from '../global-stores/useUserStore'
 import { useCollectionStore } from '../global-stores/useCollectionStore'
 import { usePopup } from '../global-stores/usePopup'
+import Workrate from './Workrate'
 
 const Header:React.FC = () => {
     const fetchuser = useUserStore(state => state.fetch)
@@ -16,6 +17,8 @@ const Header:React.FC = () => {
 
     const user = useUserStore(state=> state.user)
 
+    const toggleWorkrate = usePopup(state => state.toggleWorkrate)
+
     useEffect(() => {
         fetchuser()
         fetchCollection()
@@ -24,6 +27,7 @@ const Header:React.FC = () => {
     return(
         <>
         <Settings/>
+        <Workrate/>
         <nav className='flex justify-center mt-4'>
             <div className={` ${user.theme} z-10 bg-opacity-20 bg-clip-padding backdrop-filter backdrop-blur-md shadow-lg backdrop-saturate-150  border-none flex justify-end items-center w-2/5 h-14 p-2 rounded aqua-effect`}>
             {loading
@@ -34,7 +38,7 @@ const Header:React.FC = () => {
                         </>}
                         {session && <>
                         <div  className='ml-2' onClick={() => signOut()}><Button name='Sign Out'/></div>
-                        <div className='ml-2'>
+                        <div onClick={toggleWorkrate} className='ml-2'>
                             <Button name='Work rate'/>
                         </div>
                         <div onClick={toggleSettings} className='ml-2'>

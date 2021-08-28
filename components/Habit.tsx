@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useTestStore } from "../global-stores/useTestStore";
 import { useEffect,useContext } from "react";
 import { useUserStore } from "../global-stores/useUserStore";
+import { useFortnightStore } from "../global-stores/useFortnightStore";
 
 const BoltIcon =  () =>(
     <svg
@@ -19,6 +20,7 @@ const Habit:React.FC = () => {
     const focusingOn = useUserStore(state => state.user.focusingOn)
     const loading = useUserStore(state => state.loading)
     const updateFocusingOn = useUserStore(state => state.updateFocusingOn)
+    const sumFort = useFortnightStore(state => state.sumFort)
 
     const sendData = (data) => {
         const object = {
@@ -28,33 +30,33 @@ const Habit:React.FC = () => {
     }
 
     return(
-        <div className='flex justify-center items-center flex-col h-full'>
-            <div onClick={() => sendData('studying')} className='cursor-pointer transition ease-in duration-100 transform hover:-translate-y-1 font-bold text-3xl text-white mb-1  rounded-lg flex items-center justify-center'>
+        <div className='flex justify-center items-center w-full flex-col h-full'>
+            <div onClick={() => sendData('studying')} className={focusingOn==='studying' ? 'cursor-pointer w-full transition ease-in duration-100 transform hover:-translate-y-1 font-bold text-3xl text-white mb-1  rounded-lg flex items-center justify-start pl-4' :'cursor-pointer w-full transition ease-in duration-100 transform hover:-translate-y-1 font-bold text-3xl text-white mb-1  rounded-lg flex items-center justify-start pl-12'}>
                 {focusingOn=='studying' ?<BoltIcon/> :null}
                 <div>
-                    <p className='w-full'>Study</p>
-                    <p className='text-sm mt-1 font-light'>You have studied for 12 hours</p>
+                    <p className='w-full '>Study</p>
+                    <p className='text-sm mt-1 font-light'>Studied for {sumFort.studiedFor} minutes</p>
                 </div> 
             </div>
-            <div onClick={() => sendData('reading')} className='cursor-pointer transition ease-in duration-100 transform hover:-translate-y-1 font-bold text-3xl text-white mb-1 rounded-lg flex items-center justify-center'>
+            <div onClick={() => sendData('reading')} className={focusingOn==='reading' ? 'cursor-pointer w-full transition ease-in duration-100 transform hover:-translate-y-1 font-bold text-3xl text-white mb-1  rounded-lg flex items-center justify-start pl-4' :'cursor-pointer w-full transition ease-in duration-100 transform hover:-translate-y-1 font-bold text-3xl text-white mb-1  rounded-lg flex items-center justify-start pl-12'}>
                 {focusingOn=='reading' ?<BoltIcon/> :null}
                 <div>
                     <p className='w-full'>Read</p>
-                    <p className='text-sm mt-1 font-light'>You have read for 12 hours</p>
+                    <p className='text-sm mt-1 font-light'>Read for {sumFort.readFor} minutes</p>
                 </div>
             </div>
-            <div onClick={() => sendData('writing')} className='cursor-pointer transition ease-in duration-100 transform hover:-translate-y-1 font-bold text-3xl text-white mb-1  rounded-lg flex items-center justify-center'>
+            <div onClick={() => sendData('writing')} className={focusingOn==='writing' ? 'cursor-pointer w-full transition ease-in duration-100 transform hover:-translate-y-1 font-bold text-3xl text-white mb-1  rounded-lg flex items-center justify-start pl-4' :'cursor-pointer w-full transition ease-in duration-100 transform hover:-translate-y-1 font-bold text-3xl text-white mb-1  rounded-lg flex items-center justify-start pl-12'}>
                 {focusingOn=='writing' ?<BoltIcon/> :null}
                 <div>
                     <p className='w-full'>Write</p>
-                    <p className='text-sm mt-1 font-light'>You have written for 12 hours</p>
+                    <p className='text-sm mt-1 font-light'>Written for {sumFort.wroteFor} minutes</p>
                 </div>
             </div>
-            <div onClick={() => sendData('drawing')} className='cursor-pointer transition ease-in duration-100 transform hover:-translate-y-1 font-bold text-3xl text-white mb-1  rounded-lg flex items-center justify-center'>
+            <div onClick={() => sendData('drawing')} className={focusingOn==='drawing' ? 'cursor-pointer w-full transition ease-in duration-100 transform hover:-translate-y-1 font-bold text-3xl text-white mb-1  rounded-lg flex items-center justify-start pl-4' :'cursor-pointer w-full transition ease-in duration-100 transform hover:-translate-y-1 font-bold text-3xl text-white mb-1  rounded-lg flex items-center justify-start pl-12'}>
                 {focusingOn=='drawing' ?<BoltIcon/> :null}
                 <div>
                     <p className='w-full'>Draw</p>
-                    <p className='text-sm mt-1 font-light'>You have drawn for 12 hours</p>
+                    <p className='text-sm mt-1 font-light'>Drawn for {sumFort.drewFor} Minutes</p>
                 </div>
             </div>
         </div>

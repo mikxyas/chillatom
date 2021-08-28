@@ -22,6 +22,8 @@ const Pomodoro:React.FC = () => {
     const updateFort = useFortnightStore(state => state.updateFort)
     const latestfortnight = useFortnightStore(state => state.latestFortnight)
     const createFortnight = useFortnightStore(state => state.createFortnight)
+    const sumFort = useFortnightStore(state => state.sumFort)
+    const getSumFort = useFortnightStore(state => state.getSumFort)
 
     const handleFortnight = () => {
         let fortnightData = {
@@ -134,6 +136,7 @@ const Pomodoro:React.FC = () => {
             try{
                 await fetchFortnight()
                 await getLatestFort()
+                await getSumFort()
                 console.log('hello!!')
             }
             catch(e){
@@ -141,7 +144,9 @@ const Pomodoro:React.FC = () => {
             }
         }
         fetchit()
-        
+        return() =>{
+
+        }
     },[])
 
     return(
@@ -155,7 +160,7 @@ const Pomodoro:React.FC = () => {
                 <div className='text-white font-bold text-center'>
                     <p>Sessions {sessionCounter}</p>
                     {!breakTime
-                        ?<p>Study hard, and smart</p>
+                        ?<p>Focus on {user.focusingOn}</p>
                         :<p>Time to chill</p>
                     }
                     
