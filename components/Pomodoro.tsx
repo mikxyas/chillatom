@@ -130,8 +130,18 @@ const Pomodoro:React.FC = () => {
     }, [chillTime, focusTime])
 
     useEffect(() => {
-        fetchFortnight()
-        getLatestFort()
+        async function fetchit(){
+            try{
+                await fetchFortnight()
+                await getLatestFort()
+                console.log('hello!!')
+            }
+            catch(e){
+                console.log(e)
+            }
+        }
+        fetchit()
+        
     },[])
 
     return(
