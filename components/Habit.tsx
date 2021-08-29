@@ -2,7 +2,26 @@ import Image from "next/image";
 import { useTestStore } from "../global-stores/useTestStore";
 import { useEffect,useContext } from "react";
 import { useUserStore } from "../global-stores/useUserStore";
-import { useFortnightStore } from "../global-stores/useFortnightStore";
+import { useFocusLogStore } from "../global-stores/useFocusLogStore";
+
+export function minuteTohour(time) {
+    if(time < 60){
+        // return minutes
+        return time +' minutes'
+    }
+    if(time >=60){
+        // return hours
+        return Math.round(time / 60) +' hours'
+    }
+    if(time >=1440){
+        // return days
+        return Math.round(time/1440) + ' days'
+    }
+    if(time === null){
+        return 'Not'
+    }
+    
+}
 
 const BoltIcon =  () =>(
     <svg
@@ -20,7 +39,7 @@ const Habit:React.FC = () => {
     const focusingOn = useUserStore(state => state.user.focusingOn)
     const loading = useUserStore(state => state.loading)
     const updateFocusingOn = useUserStore(state => state.updateFocusingOn)
-    const sumFort = useFortnightStore(state => state.sumFort)
+    const focusLogSum = useFocusLogStore(state => state.focusLogSum)
 
     const sendData = (data) => {
         const object = {
@@ -35,28 +54,28 @@ const Habit:React.FC = () => {
                 {focusingOn=='studying' ?<BoltIcon/> :null}
                 <div>
                     <p className='w-full '>Study</p>
-                    <p className='text-sm mt-1 font-light'>Studied for {sumFort.studiedFor} minutes</p>
+                    <p className='text-sm mt-1 font-light'>Studied for {minuteTohour(focusLogSum.studiedFor)} </p>
                 </div> 
             </div>
             <div onClick={() => sendData('reading')} className={focusingOn==='reading' ? 'cursor-pointer w-full transition ease-in duration-100 transform hover:-translate-y-1 font-bold text-3xl text-white mb-1  rounded-lg flex items-center justify-start pl-4' :'cursor-pointer w-full transition ease-in duration-100 transform hover:-translate-y-1 font-bold text-3xl text-white mb-1  rounded-lg flex items-center justify-start pl-12'}>
                 {focusingOn=='reading' ?<BoltIcon/> :null}
                 <div>
                     <p className='w-full'>Read</p>
-                    <p className='text-sm mt-1 font-light'>Read for {sumFort.readFor} minutes</p>
+                    <p className='text-sm mt-1 font-light'>Read for {minuteTohour(focusLogSum.readFor)}</p>
                 </div>
             </div>
             <div onClick={() => sendData('writing')} className={focusingOn==='writing' ? 'cursor-pointer w-full transition ease-in duration-100 transform hover:-translate-y-1 font-bold text-3xl text-white mb-1  rounded-lg flex items-center justify-start pl-4' :'cursor-pointer w-full transition ease-in duration-100 transform hover:-translate-y-1 font-bold text-3xl text-white mb-1  rounded-lg flex items-center justify-start pl-12'}>
                 {focusingOn=='writing' ?<BoltIcon/> :null}
                 <div>
                     <p className='w-full'>Write</p>
-                    <p className='text-sm mt-1 font-light'>Written for {sumFort.wroteFor} minutes</p>
+                    <p className='text-sm mt-1 font-light'>Written for {minuteTohour(focusLogSum.wroteFor)}</p>
                 </div>
             </div>
             <div onClick={() => sendData('drawing')} className={focusingOn==='drawing' ? 'cursor-pointer w-full transition ease-in duration-100 transform hover:-translate-y-1 font-bold text-3xl text-white mb-1  rounded-lg flex items-center justify-start pl-4' :'cursor-pointer w-full transition ease-in duration-100 transform hover:-translate-y-1 font-bold text-3xl text-white mb-1  rounded-lg flex items-center justify-start pl-12'}>
                 {focusingOn=='drawing' ?<BoltIcon/> :null}
                 <div>
                     <p className='w-full'>Draw</p>
-                    <p className='text-sm mt-1 font-light'>Drawn for {sumFort.drewFor} Minutes</p>
+                    <p className='text-sm mt-1 font-light'>Drawn for {minuteTohour(focusLogSum.drewFor)}</p>
                 </div>
             </div>
         </div>

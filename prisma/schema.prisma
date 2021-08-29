@@ -21,7 +21,7 @@ model Collection {
   creatorId       Int?
 }
 
-model Fortnight  {
+model FocusLog  {
   id              Int @id @default(autoincrement())
   totFocusedMin   Int @default(0)
   drewFor         Int @default(0)
@@ -43,7 +43,7 @@ model User {
   createdAt     DateTime  @default(now()) @map(name:"created_at")
   updatedAt     DateTime  @default(now()) @map(name:"updated_at")
   collection    Collection[]
-  Fortnight     Fortnight[]
+  FocusLogs     FocusLog[]
   listeningTo   String @default("nothing")
   focusingOn    String @default("studying")
   focusFor      Int @default(25)

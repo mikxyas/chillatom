@@ -4,7 +4,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler (req: NextApiRequest, res: NextApiResponse) {
     const session = await getSession({req})
-    const aggregations = await prisma.fortnight.aggregate({
+    const aggregations = await prisma.focusLog.aggregate({
         _sum: {
           studiedFor:true,
           wroteFor:true,

@@ -1,5 +1,6 @@
+import { stringify } from "querystring";
 import { useState, useEffect } from "react";
-import { useFortnightStore } from "../global-stores/useFortnightStore";
+import { useFocusLogStore } from "../global-stores/useFocusLogStore";
 import { useUserStore } from "../global-stores/useUserStore";
 import Button from "./Button"
 
@@ -16,33 +17,32 @@ const Pomodoro:React.FC = () => {
 
     const [sessionCounter, setSessionCouter] = useState(0)
 
-    const fetchFortnight = useFortnightStore(state => state.fetchFortnight)
-    const getLatestFort = useFortnightStore(state => state.getLatestFort)
-    const addFort = useFortnightStore(state => state.createFortnight)
-    const updateFort = useFortnightStore(state => state.updateFort)
-    const latestfortnight = useFortnightStore(state => state.latestFortnight)
-    const createFortnight = useFortnightStore(state => state.createFortnight)
-    const sumFort = useFortnightStore(state => state.sumFort)
-    const getSumFort = useFortnightStore(state => state.getSumFort)
-
-    const handleFortnight = () => {
-        let fortnightData = {
-            focusedMin: user.focusFor, action:'',id:latestfortnight.id
+    const fetchFocusLog = useFocusLogStore(state => state.fetchFocusLog)
+    const getLatestFocusLog = useFocusLogStore(state => state.getLatestFocusLog)
+    const addFocusLog = useFocusLogStore(state => state.addFocusLog)
+    const updateFocusLog = useFocusLogStore(state => state.updateFocusLog)
+    const latestFocusLog = useFocusLogStore(state => state.latestFocusLog)
+    const createFocusLog = useFocusLogStore(state => state.createFocusLog)
+    const focusLogSum = useFocusLogStore(state => state.focusLogSum)
+    const getSumFocusLog = useFocusLogStore(state => state.getSumFocusLog)
+    const handleFocusLog = () => {
+        let focusLogData = {
+            focusedMin: user.focusFor, action:'',id:latestFocusLog.id
         }
         if(user.focusingOn === 'studying'){
-            fortnightData.action = 'studiedFor'
+            focusLogData.action = 'studiedFor'
         } if(user.focusingOn === 'reading'){
-            fortnightData.action = 'readFor'
+            focusLogData.action = 'readFor'
         } if(user.focusingOn === 'studying'){
-            fortnightData.action = 'studiedFor'
+            focusLogData.action = 'studiedFor'
         } if(user.focusingOn === 'drawing'){
-            fortnightData.action = 'drewFor'
+            focusLogData.action = 'drewFor'
         }
 
-        if(createFortnight){
-            addFort(fortnightData)
+        if(createFocusLog){
+            addFocusLog(focusLogData)
         }else{
-            updateFort(fortnightData)
+            updateFocusLog(focusLogData)
         }
     }
 
@@ -98,7 +98,7 @@ const Pomodoro:React.FC = () => {
                         setMinutes(user.focusFor)
                         setSeconds(0)
                         setSessionCouter(sessionCounter + 1)
-                        handleFortnight()
+                        handleFocusLog()
                         return 0;
                     };
                     if(seconds === 0 && minutes !== 0){
@@ -134,9 +134,9 @@ const Pomodoro:React.FC = () => {
     useEffect(() => {
         async function fetchit(){
             try{
-                await fetchFortnight()
-                await getLatestFort()
-                await getSumFort()
+                await fetchFocusLog()
+                await getLatestFocusLog()
+                await getSumFocusLog()
                 console.log('hello!!')
             }
             catch(e){

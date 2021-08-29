@@ -9,10 +9,10 @@ export default async function handle(req: NextApiRequest, res:NextApiResponse){
           res.statusCode = 403;
           return { props: { fortnight: [] } };
         }
-        const fortnight = await prisma.fortnight.findFirst({
+        const focusLog = await prisma.focusLog.findFirst({
             where: {
               creator: {email: session.user.email}
             }
         });
-        res.json(fortnight)
+        res.json(focusLog)
       }

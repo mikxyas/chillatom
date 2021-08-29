@@ -75,6 +75,8 @@ const Settings:React.FC = () => {
                             <div onClick={()=>handleTheme('bg-blue-800')} className='cursor-pointer w-12 h-12 border-2 border-black border-opacity-50 rounded-3xl bg-blue-600'></div>
                             <div onClick={()=>handleTheme('bg-red-800')} className='cursor-pointer w-12 h-12 border-2 border-black border-opacity-50 rounded-3xl bg-red-600'></div>
                             <div onClick={()=>handleTheme('bg-pink-800')} className='cursor-pointer w-12 h-12 border-2 border-black border-opacity-50 rounded-3xl bg-pink-600'></div>
+                            <div onClick={()=>handleTheme('bg-transparent')} className='cursor-pointer w-12 h-12 border-2 border-black border-opacity-50 rounded-3xl bg-transparent'></div>
+                            <div onClick={()=>handleTheme('bg-black')} className='cursor-pointer w-12 h-12 border-2 border-black border-opacity-50 rounded-3xl bg-black'></div>
                         </div>
                     </div>
                 </div>
