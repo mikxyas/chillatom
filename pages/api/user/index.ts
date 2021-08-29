@@ -16,6 +16,7 @@ export default async function handler (req: NextApiRequest, res: NextApiResponse
             focusingOn:true,
             chillFor:true,
             theme:true,
+            createdAt:true,
         }
     })
     res.json(user)

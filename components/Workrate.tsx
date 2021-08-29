@@ -2,6 +2,10 @@ import { useFocusLogStore } from "../global-stores/useFocusLogStore"
 import { usePopup } from "../global-stores/usePopup"
 import Button from "./Button"
 import { minuteTohour } from "./Habit"
+import { ResponsiveCalendar } from '@nivo/calendar'
+import { useUserStore } from "../global-stores/useUserStore"
+import {useEffect, useState} from 'react'
+
 
 function GetMonth(month){
     if(month === 0){
@@ -45,21 +49,57 @@ function GetMonth(month){
 function ExtractDate(date) {
     const month =  GetMonth(new Date(date).getUTCMonth())
     const month_date =  new Date(date).getUTCDate()
-    
     return month + ' ' +month_date 
 
     // const month = GetMonth(thedate)
     // const datenum = new Date().getMonth()
     // return month + ' ' + datenum 
 }
+function changeKey(originalKey, newKey, arr)
+{
+  var newArr = [];
+  for(var i = 0; i < arr.length; i++)
+  {
+    var obj = arr[i];
+    obj[newKey] = obj[originalKey];
+    delete(obj[originalKey]);
+    newArr.push(obj);
+  }
+  return newArr;
+}
+
+
 
 const Workrate:React.FC = () => {
     const showWorkrate = usePopup(state=> state.showWorkrate)
     const toggleWorkrate = usePopup(state => state.toggleWorkrate)
 
+    const user = useUserStore(state => state.user)
+
     const focusLogSum = useFocusLogStore(state => state.focusLogSum)
     const focusLogs = useFocusLogStore(state => state.focusLogs)
-
+    const logsFetched = useFocusLogStore(state => state.logsFetched)
+    const latestFocusLog = useFocusLogStore(state => state.latestFocusLog)
+    const [calanderData, setCalanderData] = useState([])
+    console.log(calanderData)
+    useEffect(() => {
+        function CreateCalandarData() {
+            console.log(focusLogs)
+            console.log('logging focus logs')
+            focusLogs.map(log => {
+                for(var i = 0; i < focusLogs.length; i++){
+                    var obj = {
+                        "day": log.startedAt.split('T')[0],
+                        "value": log.totFocusedMin
+                    };
+                    setCalanderData([...calanderData, {...obj}])
+                }
+            })
+        }
+        if(logsFetched){
+            CreateCalandarData() 
+        }
+    },[focusLogs])      
     return(
         <>  
         {showWorkrate
@@ -71,14 +111,41 @@ const Workrate:React.FC = () => {
                     <i onClick={toggleWorkrate} className="gg-close-o cursor-pointer"></i>
                 </div>
                 <div className='flex justify-center col-span-2'>
-                    <div className='bg-gray-200 p-4 rounded-lg'><h1 className='text-xl font-semibold'>{minuteTohour(focusLogSum.totFocusedMin)}</h1> <p>Focused</p></div>
-                    <div className='bg-gray-200 ml-3 p-4 rounded-lg'><h1 className='text-xl font-semibold'>{minuteTohour(focusLogSum.studiedFor)}</h1> <p>Studied</p></div>
-                    <div className='bg-gray-200 ml-3 p-4 rounded-lg'><h1 className='text-xl font-semibold'>{minuteTohour(focusLogSum.readFor)}</h1> <p>Read</p></div>
-                    <div className='bg-gray-200 ml-3 p-4 rounded-lg'><h1 className='text-xl font-semibold'>{minuteTohour(focusLogSum.wroteFor)}</h1> <p>Wrote</p></div>
-                    <div className='bg-gray-200 ml-3 p-4 rounded-lg'><h1 className='text-xl font-semibold'>{minuteTohour(focusLogSum.drewFor)}</h1> <p>Drawn</p></div>
+                    <div className='bg-gray-100 p-4 rounded-lg'><h1 className='text-xl font-semibold'>{minuteTohour(focusLogSum.totFocusedMin)}</h1> <p>Focused</p></div>
+                    <div className='bg-gray-100 ml-3 p-4 rounded-lg'><h1 className='text-xl font-semibold'>{minuteTohour(focusLogSum.studiedFor)}</h1> <p>Studied</p></div>
+                    <div className='bg-gray-100 ml-3 p-4 rounded-lg'><h1 className='text-xl font-semibold'>{minuteTohour(focusLogSum.readFor)}</h1> <p>Read</p></div>
+                    <div className='bg-gray-100 ml-3 p-4 rounded-lg'><h1 className='text-xl font-semibold'>{minuteTohour(focusLogSum.wroteFor)}</h1> <p>Wrote</p></div>
+                    <div className='bg-gray-100 ml-3 p-4 rounded-lg'><h1 className='text-xl font-semibold'>{minuteTohour(focusLogSum.drewFor)}</h1> <p>Drawn</p></div>
                 </div>
-                <div className='flex'>
-                    hi
+                <div  style={{ width: '100%', height: '10em' }} className='flex col-span-2'>
+                    <ResponsiveCalendar data={calanderData}
+                        from={user.createdAt}
+                        to={latestFocusLog.startedAt}
+                        emptyColor="#e8e8e8"
+                        colors={[ '#61cdbb', '#97e3d5', '#e8c1a0', '#f47560' ]}
+                        margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+                        yearSpacing={35}
+                        yearLegendOffset={9}
+                        monthSpacing={5}
+                        monthBorderColor="#ffffff"
+                        monthLegendOffset={7}
+                        dayBorderWidth={3}
+                        dayBorderColor="#ffffff"
+                        // tooltip={null}
+                        
+                        legends={[
+                            {
+                                anchor: 'bottom-right',
+                                direction: 'row',
+                                translateY: 36,
+                                itemCount: 4,
+                                itemWidth: 42,
+                                itemHeight: 36,
+                                itemsSpacing: 14,
+                                itemDirection: 'right-to-left'
+                            }
+                        ]}
+                    />
                 </div>
             </div>
         </div>

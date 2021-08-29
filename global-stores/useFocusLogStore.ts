@@ -8,11 +8,12 @@ export const useFocusLogStore = create((set, get) => ({
     latestFocusLog:{},
     createFocusLog:true,
     focusLogSum:{},
+    logsFetched:false,
     fetchFocusLog: async FetchFocus => {
         try{
             const response = await fetch('http://localhost:3000/api/focusLog')
             const data = await response.json()
-            set({focusLogs: data})
+            set({focusLogs: data, logsFetched:true})
         }
         catch(e){
             set({error:true, userFetched:false, loading:false})
