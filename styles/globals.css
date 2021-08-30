@@ -12,11 +12,12 @@
     background: linear-gradient(rgba(255, 255, 255, 0.247) 0%, rgba(0, 0, 0, 0) 100%);
     border-radius: 20px;
     height: 50%;
-    left: 0%;
     position: absolute;
     top: 0px;
+    left: .5%;
+    right: .5%;
     transition: all ease .3s;
-    width: 100%;
+    width: 99%;
     pointer-events: none;
 }
 nav .aqua-effect::before{
@@ -73,11 +74,15 @@ nav .aqua-effect::before{
         justify-content: flex-end;
         align-items: center;
     }
-    .bg-img img{
+    .bg-img{
         position: absolute;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
         height: 100%;
         width: 100%;
-        z-index: -1;
+
     }
     nav{
         z-index: 3 !important; 
@@ -88,19 +93,12 @@ nav .aqua-effect::before{
     height: 100%;
     width: 100%;
 }    
-.yt-player iframe{
+/* .yt-player iframe{
     height: 286px;
     width: 535px;
     border-radius: 20px;
-}
-.playlist-form{
-    width: 535px;
-}
-.playlist-form .cont{
-    display: flex;
-    width: 535px !important;
-    height: 286px;
-}
+} */
+
 
 
 

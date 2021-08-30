@@ -42,15 +42,15 @@ const Settings:React.FC = () => {
         <>
         {showSettings
             ?    
-            <div className='absolute z-50 h-auto mt-20 w-full flex items-center flex-col justify-center'>
+            <div className='absolute z-50 h-auto mt-20 w-full flex items-center flex-col justify-center md:pl-0 md:pr-0 pl-2 pr-2'>
 
-                <div  className='pb-8 pl-8 pr-8 pt-8 items-center justify-center w-2/5 h-auto bg-white shadow-lg rounded-xl grid gap-5 grid-cols-2'>
+                <div  className='pb-8 pl-8 pr-8 pt-8 items-center justify-center w-full md:w-2/5 h-auto bg-white shadow-lg rounded-xl grid gap-5 grid-cols-2'>
                     <div className='col-span-2 pb-3 flex justify-between'>
                         <p className='text-3xl font-semibold'>Settings</p>
                         <i onClick={toggleSettings} className="gg-close-o cursor-pointer"></i>
                     </div>
 
-                    <div className='p-4 font-semibold shadow  bg-opacity-20   rounded-xl flex  flex-col'>
+                    <div className='p-4 font-semibold shadow col-span-2 md:col-span-1   bg-opacity-20   rounded-xl flex  flex-col'>
                         <p className='text-xl mb-2'>Update time</p>
                         <div className='flex justify-between mb-1'>
                             Focus Time <input type='number' onChange={(e) => setFocusFor(e.target.value)} value={focusFor} className='w-12 border-gray-800  border-2 border-opacity-10 text-center rounded'/>
@@ -61,13 +61,13 @@ const Settings:React.FC = () => {
                         <button onClick={() => sendTime()} className='p-2 mt-2 rounded-md w-full bg-opacity-60 hover:bg-opacity-100 text-white font-semibold text-sm bg-black'>Update</button>
                     </div>
 
-                    <div className='p-4  font-semibold shadow bg-opacity-20 rounded-xl flex flex-col'>
+                    <div className='p-4 col-span-2 md:col-span-1 font-semibold shadow bg-opacity-20 rounded-xl flex flex-col'>
                         <p className='text-xl'>Change Background</p>
                         <input placeholder='Paste unsplash link here' className='bg-white border-2 mt-2 p-1 rounded border-black border-opacity-10'/>
                         
                         <button className='p-2 mt-2 rounded-md bg-opacity-60 hover:bg-opacity-100 text-white font-semibold text-sm bg-black'>Update</button>
                     </div>
-                    <div className='p-4  font-semibold shadow bg-opacity-20 rounded-xl flex flex-col'>
+                    <div className='p-4 col-span-2 md:col-span-1 font-semibold shadow bg-opacity-20 rounded-xl flex flex-col'>
                         <p className='text-xl'>Change Theme</p>
                         <div className='flex mt-2 justify-around'>
                             <div onClick={()=>handleTheme('bg-white')} className=' cursor-pointer w-12 h-12 border-2 border-black border-opacity-50 rounded-3xl bg-white'></div>

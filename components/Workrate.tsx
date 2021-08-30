@@ -103,21 +103,21 @@ const Workrate:React.FC = () => {
     return(
         <>  
         {showWorkrate
-            ?<div className='absolute z-50 h-auto mt-20 w-full flex items-center flex-col justify-center'>
+            ?<div className='absolute z-50 h-full  mt-20 w-full flex items-center flex-col justify-start md:pl-0 md:pr-0 pl-2 pr-2'>
 
-            <div  className='p-8 items-center justify-center w-2/5 h-auto bg-white shadow-lg rounded-xl grid gap-5 grid-cols-2'>
+            <div  className='p-8 items-center   justify-center w-full md:w-2/5 h-auto bg-white shadow-lg rounded-xl grid gap-5 grid-cols-2'>
                 <div className='col-span-2 pb-3 flex justify-between'>
                     <p className='text-3xl font-semibold'>Work Rate</p>
                     <i onClick={toggleWorkrate} className="gg-close-o cursor-pointer"></i>
                 </div>
-                <div className='flex justify-center col-span-2'>
+                <div className='md:flex col-span-2 gap-2 grid grid-cols-3 w-full'>
                     <div className='bg-gray-100 p-4 rounded-lg'><h1 className='text-xl font-semibold'>{minuteTohour(focusLogSum.totFocusedMin)}</h1> <p>Focused</p></div>
-                    <div className='bg-gray-100 ml-3 p-4 rounded-lg'><h1 className='text-xl font-semibold'>{minuteTohour(focusLogSum.studiedFor)}</h1> <p>Studied</p></div>
-                    <div className='bg-gray-100 ml-3 p-4 rounded-lg'><h1 className='text-xl font-semibold'>{minuteTohour(focusLogSum.readFor)}</h1> <p>Read</p></div>
-                    <div className='bg-gray-100 ml-3 p-4 rounded-lg'><h1 className='text-xl font-semibold'>{minuteTohour(focusLogSum.wroteFor)}</h1> <p>Wrote</p></div>
-                    <div className='bg-gray-100 ml-3 p-4 rounded-lg'><h1 className='text-xl font-semibold'>{minuteTohour(focusLogSum.drewFor)}</h1> <p>Drawn</p></div>
+                    <div className='bg-gray-100 p-4 rounded-lg'><h1 className='text-xl font-semibold'>{minuteTohour(focusLogSum.studiedFor)}</h1> <p>Studied</p></div>
+                    <div className='bg-gray-100 p-4 rounded-lg'><h1 className='text-xl font-semibold'>{minuteTohour(focusLogSum.readFor)}</h1> <p>Read</p></div>
+                    <div className='bg-gray-100 p-4 rounded-lg'><h1 className='text-xl font-semibold'>{minuteTohour(focusLogSum.wroteFor)}</h1> <p>Wrote</p></div>
+                    <div className='bg-gray-100 p-4 rounded-lg'><h1 className='text-xl font-semibold'>{minuteTohour(focusLogSum.drewFor)}</h1> <p>Drawn</p></div>
                 </div>
-                <div  style={{ width: '100%', height: '10em' }} className='flex col-span-2'>
+                <div  style={{ width: '100%', height: '10em' }} className=' bg-transparent flex h-full col-span-2'>
                     {focusLogs[0] != undefined 
                         ?<ResponsiveCalendar data={calanderData}
                         from={user.createdAt}
@@ -132,6 +132,7 @@ const Workrate:React.FC = () => {
                         monthLegendOffset={7}
                         dayBorderWidth={3}
                         dayBorderColor="#ffffff"
+                        // direction="vertical" MAke hook for this
                         // tooltip={null}
                         
                         legends={[

@@ -28,8 +28,8 @@ const Header:React.FC = () => {
         <>
         <Settings/>
         <Workrate/>
-        <nav className='flex justify-center mt-4'>
-            <div className={` ${user.theme} z-10 bg-opacity-20 bg-clip-padding backdrop-filter backdrop-blur-md shadow-lg backdrop-saturate-150  border-none flex justify-end items-center w-2/5 h-14 p-2 rounded aqua-effect`}>
+        <nav className='flex justify-center mt-4 md:p-0 p-2'>
+            <div className={` ${user.theme} z-10 bg-opacity-20 bg-clip-padding backdrop-filter backdrop-blur-md shadow-lg backdrop-saturate-150  border-none flex justify-end items-center w-full md:w-2/5  h-14 p-2 rounded aqua-effect`}>
             {loading
                 ?<Button name='Loading...'/>
                 :<>
@@ -37,13 +37,16 @@ const Header:React.FC = () => {
                         <div onClick={() => signIn()}><Button name='Sign In'/></div>
                         </>}
                         {session && <>
-                        <div  className='ml-2' onClick={() => signOut()}><Button name='Sign Out'/></div>
-                        <div onClick={toggleWorkrate} className='ml-2'>
-                            <Button name='Work rate'/>
+                        <div className='flex md:justify-end w-full justify-start'>
+                            {/* <div  className='ml-2' onClick={() => signOut()}><Button name='Sign Out'/></div> */}
+                            <div onClick={toggleWorkrate} className='ml-2'>
+                                <Button name='Work rate'/>
+                            </div>
+                            <div onClick={toggleSettings} className='ml-2'>
+                                <Button name='Settings'/>
+                            </div>
                         </div>
-                        <div onClick={toggleSettings} className='ml-2'>
-                        <Button name='Settings'/>
-                        </div>
+                      
                         <Profile image={session.user.image}/>
                         
                         </>}

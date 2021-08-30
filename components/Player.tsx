@@ -89,36 +89,36 @@ const Player: React.FC = () => {
 
     }, [collection, listeningTo])
     return(
-        <div className='flex'>
+        <div className='md:flex'>
             {!showForm
                 ?<div className='yt-player'>
                     {liveCollectoin.isPlaylist
-                        ?<iframe  src={`https://www.youtube.com/embed/videoseries?list=${listeningTo}`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-                        :<iframe  src={`https://www.youtube.com/embed/${listeningTo}`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                        ?<iframe className='w-full h-64 md:w-full rounded-xl md:h-72'  src={`https://www.youtube.com/embed/videoseries?list=${listeningTo}`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                        :<iframe className='w-full h-64 rounded-xl md:h-72' src={`https://www.youtube.com/embed/${listeningTo}`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                     }
                     
                 </div>
-                :<div className='playlist-form'>
-                    <div className='cont flex items-start ml-8 flex-col  rounded-lg justify-center'>
-                        <p className='text-2xl font-bold mb-3 w-2/3 text-white'>{isPlaylist ?"Create a YouTube Playlist" : isLivestream?"Create a YouTube Livestream" : isVideo?"Create a YouTube Video" :null}</p>
-                        <input value={title} onChange={(e) => setTitle(e.target.value )} className='p-2 rounded-md w-2/3' placeholder={isPlaylist ?"Name the Playlist" : isLivestream?"Name the Livestream" : isVideo?"Name the Video" :null}/>
-                        <input value={url} onChange={(e) => setUrl(e.target.value )} className='p-2 mt-2 rounded-md w-2/3' placeholder={isPlaylist ?"Paste the Playlist URL here" : isLivestream?"Paste the Livestream URL here" : isVideo?"Paste the Video URL here" :null}/>
+                :<div className='flex justtify-center w-full pt-2 pb-2'>
+                    <div className=' w-5/6 flex items-start ml-8 flex-col  rounded-lg justify-center'>
+                        <p className='text-2xl font-bold mb-3 w-full md:w-2/3 text-white'>{isPlaylist ?"Add a YouTube Playlist" : isLivestream?"Add a YouTube Livestream" : isVideo?"Add a YouTube Video" :null}</p>
+                        <input value={title} onChange={(e) => setTitle(e.target.value )} className='p-2 rounded-md w-full md:w-2/3' placeholder={isPlaylist ?"Name the Playlist" : isLivestream?"Name the Livestream" : isVideo?"Name the Video" :null}/>
+                        <input value={url} onChange={(e) => setUrl(e.target.value )} className='p-2 mt-2 rounded-md w-full md:w-2/3' placeholder={isPlaylist ?"Paste the Playlist URL here" : isLivestream?"Paste the Livestream URL here" : isVideo?"Paste the Video URL here" :null}/>
                         <div className='flex justify-between items-center w-2/3 mt-2 mb-2'>
-                            <p onClick={playlistSelected} className='cursor-pointer flex justify-center items-center text-xl  text-white font-semibold'>Playlist <i className={isPlaylist? 'gg-check ml-1 bg-blue-400' :'gg-check ml-1 bg-white' }/></p> 
-                            <p onClick={livestreamSelected} className='cursor-pointer  flex justify-center items-center  text-xl  text-white font-semibold'>Livestream <i className={isLivestream? 'gg-check ml-1 bg-blue-400' :'gg-check ml-1 bg-white' }/></p> 
-                            <p onClick={videoSelected} className='cursor-pointer  flex justify-center items-center  text-xl  text-white font-semibold'>Video <i className={isVideo? 'gg-check ml-1 bg-blue-400' :'gg-check ml-1 bg-white' }/></p> 
+                            <p onClick={playlistSelected} className='cursor-pointer flex justify-center items-center text-xl  text-white font-semibold'><i className={isPlaylist? 'gg-check ml-1 bg-blue-400' :'gg-check ml-1 bg-white' }/> Playlist</p> 
+                            <p onClick={livestreamSelected} className='cursor-pointer  flex justify-center items-center  text-xl  text-white font-semibold'><i className={isLivestream? 'gg-check ml-1 bg-blue-400' :'gg-check ml-1 bg-white' }/> Livestream</p> 
+                            <p onClick={videoSelected} className='cursor-pointer  flex justify-center items-center  text-xl  text-white font-semibold'><i className={isVideo? 'gg-check ml-1 bg-blue-400' :'gg-check ml-1 bg-white' }/> Video</p> 
                         </div>
                         <div  className='w-2/3 mt-2'>
                         <button disabled={pidValid || vidValid === true && title !='' ?false :true} onClick={() => CreateCollection()} className='w-max rounded-md bg-white  bg-opacity-20 shadow-sm font-bold text-white pl-5 pr-5 pt-2 pb-2'>
-                            Create
+                            Add
                         </button>
                         </div>
                     </div>
                 </div>
             }
             
-            <div className='w-full h-full'>
-                <div className='flex flex-col items-start ml-4 h-60 overflow-auto  overscroll-x-none w-full p-2'>
+            <div className='w-full md:w-4/12 h-full'>
+                <div className='flex flex-col items-start ml-2 md:ml-4 h-20 md:h-60  overflow-auto  overscroll-x-none w-full p-2'>
                     {collection.map((col, key) => (
                         <div key={key} className='cursor-pointer flex p-0 mb-1  items-center w-full text-2xl justify-center font-black text-white '>
                             {listeningTo === col.video_id

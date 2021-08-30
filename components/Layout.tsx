@@ -1,18 +1,17 @@
 import React, {ReactNode} from 'react';
 import Header from './Header';
 import Image from 'next/image'
+import { url } from 'inspector';
 
 type Props = {
     children:ReactNode;
 }
-
+var imageLink = "https://source.unsplash.com/1920x1080/?nature"
 const Layout: React.FC<Props> = (props) => (
-    <div>
-            <div className='bg-img'>
-                <Image layout='fill' src='https://source.unsplash.com/1920x1440/?lion'/>
-            </div>
+    <div style={{backgroundImage:`url(${imageLink})`}} className='bg-img'>
+            
             <Header/>
-            <div>
+            <div style={{backgroundImage:`url(${imageLink})`}} className='bg-img'>
                 {props.children}
             </div>
     </div>
