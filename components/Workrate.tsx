@@ -81,12 +81,12 @@ const Workrate:React.FC = () => {
     const logsFetched = useFocusLogStore(state => state.logsFetched)
     const latestFocusLog = useFocusLogStore(state => state.latestFocusLog)
     const [calanderData, setCalanderData] = useState([])
-    console.log(calanderData)
+    console.log(focusLogs )
     useEffect(() => {
         function CreateCalandarData() {
             console.log(focusLogs)
             console.log('logging focus logs')
-            focusLogs.map(log => {
+            focusLogs.forEach(log => {
                 for(var i = 0; i < focusLogs.length; i++){
                     var obj = {
                         "day": log.startedAt.split('T')[0],
@@ -118,7 +118,8 @@ const Workrate:React.FC = () => {
                     <div className='bg-gray-100 ml-3 p-4 rounded-lg'><h1 className='text-xl font-semibold'>{minuteTohour(focusLogSum.drewFor)}</h1> <p>Drawn</p></div>
                 </div>
                 <div  style={{ width: '100%', height: '10em' }} className='flex col-span-2'>
-                    <ResponsiveCalendar data={calanderData}
+                    {focusLogs[0] != undefined 
+                        ?<ResponsiveCalendar data={calanderData}
                         from={user.createdAt}
                         to={latestFocusLog.startedAt}
                         emptyColor="#e8e8e8"
@@ -146,6 +147,10 @@ const Workrate:React.FC = () => {
                             }
                         ]}
                     />
+                    :null
+
+                    }
+                    
                 </div>
             </div>
         </div>

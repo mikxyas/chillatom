@@ -25,6 +25,7 @@ const Pomodoro:React.FC = () => {
     const createFocusLog = useFocusLogStore(state => state.createFocusLog)
     const focusLogSum = useFocusLogStore(state => state.focusLogSum)
     const getSumFocusLog = useFocusLogStore(state => state.getSumFocusLog)
+    
     const handleFocusLog = () => {
         let focusLogData = {
             focusedMin: user.focusFor, action:'',id:latestFocusLog.id
@@ -33,8 +34,8 @@ const Pomodoro:React.FC = () => {
             focusLogData.action = 'studiedFor'
         } if(user.focusingOn === 'reading'){
             focusLogData.action = 'readFor'
-        } if(user.focusingOn === 'studying'){
-            focusLogData.action = 'studiedFor'
+        } if(user.focusingOn === 'writing'){
+            focusLogData.action = 'wroteFor'
         } if(user.focusingOn === 'drawing'){
             focusLogData.action = 'drewFor'
         }
@@ -87,7 +88,6 @@ const Pomodoro:React.FC = () => {
             }
         }
     }
-
     useEffect(() => {
         // Function to count the focus minutes
         if(startTimer === true && breakTime === false){

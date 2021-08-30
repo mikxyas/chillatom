@@ -5,6 +5,10 @@ import { useUserStore } from "../global-stores/useUserStore";
 import { useFocusLogStore } from "../global-stores/useFocusLogStore";
 
 export function minuteTohour(time) {
+    if(time === undefined){
+        // return minutes
+        return '0 seconds'
+    }
     if(time < 60){
         // return minutes
         return time +' minutes'
@@ -17,9 +21,7 @@ export function minuteTohour(time) {
         // return days
         return Math.round(time/1440) + ' days'
     }
-    if(time === null){
-        return 'Not'
-    }
+   
     
 }
 

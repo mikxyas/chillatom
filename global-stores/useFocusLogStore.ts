@@ -1,8 +1,14 @@
 import create from 'zustand'
-function getDifferenceInDays(date1, date2) {
-    const diffInMs = (date2 - date1);
-    return diffInMs / (1000 * 60 * 60 * 24);
-  }
+
+function CompareDate(date1, date2){
+    if(new Date(date1).getMonth() === new Date(date2).getMonth() && new Date(date1).getFullYear() === new Date(date2).getFullYear() && new Date(date1).getDay() === new Date(date2).getDay() && new Date(date1).getDate() === new Date(date2).getDate()){
+        return false
+    }else{
+        return true
+    }
+
+}
+
 export const useFocusLogStore = create((set, get) => ({
     focusLogs:{},
     latestFocusLog:{},
@@ -43,15 +49,10 @@ export const useFocusLogStore = create((set, get) => ({
             const response = await fetch('http://localhost:3000/api/focusLog/get-latest-focusLog')
             const focusLog = await response.json()
             console.log(focusLog)
-            set({latestFocusLog: focusLog})
+            set({latestFocusLog: {...focusLog[0]}})
             const currentDate = new Date()
-            const startedDate = new Date(focusLog.startedAt)
-            const elapsedDays = getDifferenceInDays(startedDate, currentDate)
-            if(elapsedDays <= 1){
-                set({createFocusLog:false})
-            }else{
-                set({createFocusLog:true})
-            }
+            const startedDate = new Date(focusLog[0].startedAt)
+            set({createFocusLog: CompareDate(currentDate, startedDate)})
         }
         catch(e) {
             console.log(e)
@@ -67,6 +68,7 @@ export const useFocusLogStore = create((set, get) => ({
             });
             const res = await resp.json();
             set({latestFocusLog: res})
+            get().getSumFocusLog()
         } catch (e) {
             console.log(e)
         }
