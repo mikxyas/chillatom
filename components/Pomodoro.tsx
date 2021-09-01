@@ -153,8 +153,8 @@ const Pomodoro:React.FC = () => {
         <div className='flex items-center h-full justify-center flex-col'>
             <div className='md:flex-col flex w-full justify-between items-center'>
             {!breakTime 
-            ?<div className='text-white font-bold text-7xl md:text-8xl md:mb-5'>{minutes === 0 ? "00" :minutes <10 ? "0" + minutes:minutes}:{seconds === 0 ? "00" : seconds < 10 ? "0" + seconds : seconds} </div> 
-            :<div className='text-white font-bold text-7xl md:text-8xl md:mb-5'>{breakMinutes === 0 ? "00" :breakMinutes <10 ? "0" + breakMinutes:breakMinutes}:{breakSeconds === 0 ? "00" : breakSeconds < 10 ? "0" + breakSeconds : breakSeconds}</div>}
+            ?<div className='text-white font-bold text-6xl md:text-8xl md:mb-5'>{minutes === 0 ? "00" :minutes <10 ? "0" + minutes:minutes}:{seconds === 0 ? "00" : seconds < 10 ? "0" + seconds : seconds} </div> 
+            :<div className='text-white font-bold text-6xl md:text-8xl md:mb-5'>{breakMinutes === 0 ? "00" :breakMinutes <10 ? "0" + breakMinutes:breakMinutes}:{breakSeconds === 0 ? "00" : breakSeconds < 10 ? "0" + breakSeconds : breakSeconds}</div>}
             <div onClick={() => setStartTimer(!startTimer)}><Button name={startTimer === true ? "Stop" :"Start"}/></div>
             </div>
             <div className='mt-4 w-full pl-3 pr-3'>

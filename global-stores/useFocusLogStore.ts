@@ -38,6 +38,7 @@ export const useFocusLogStore = create((set, get) => ({
                 latestFocusLog:{...addedData},
                 createFocusLog:false
             }))
+            get().getSumFocusLog()
         }
         catch(e){
             console.log(e)

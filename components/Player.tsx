@@ -124,12 +124,12 @@ const Player: React.FC = () => {
                             {listeningTo === col.video_id
                                 ?<><i className='mr-2 mt-1 gg-music'/>
                                 <div className='flex justify-between w-full items-center'>
-                                    <p  onClick={() => updateListeningTo(col.video_id)}>{col.title.length > 10 ?<>{col.title.substring(0,10) + '..'}</> :<>{col.title}</>}</p>
+                                    <p  onClick={() => updateListeningTo(col.video_id)}>{col.title.length > 10 ?<>{col.title.substring(0,8) + '..'}</> :<>{col.title}</>}</p>
                                     <i onClick={() => deleteCollectionfunc(col.id, key)} className="gg-trash mr-2"></i>
                                 </div>
                                 </>
                                 :<div className='flex justify-between w-full items-center'>
-                                    <p  onClick={() => updateListeningTo(col.video_id)}>{col.title.length > 11 ?<>{col.title.substring(0,11) + '...'}</> :<>{col.title}</>}</p>
+                                    <p  onClick={() => updateListeningTo(col.video_id)}>{col.title.length > 11 ?<>{col.title.substring(0,9) + '...'}</> :<>{col.title}</>}</p>
                                     <i onClick={() => deleteCollectionfunc(col.id, key)} className="gg-trash mr-2"></i>
                                 </div>
                             }
