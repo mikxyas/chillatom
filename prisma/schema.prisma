@@ -49,6 +49,7 @@ model User {
   focusFor      Int @default(25)
   chillFor      Int @default(5)
   theme         String @default("bg-white")
+  background    String @default("nature")
   @@map(name: "users")
 }
 

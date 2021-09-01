@@ -18,7 +18,8 @@ type User = {
     updateListeningTo:any,
     updatePomoTime:any,
     updateFocusingOn: any,
-    updateTheme:any
+    updateTheme:any,
+    updateBackground:any,
 }
 
 export const useUserStore = create<User>(set => ({
@@ -54,6 +55,20 @@ export const useUserStore = create<User>(set => ({
         try{    
 
                 const response = await fetch('http://localhost:3000/api/user/update-pomo',{
+                    method: 'POST',
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify(body)
+                })
+                const updatedData = await response.json()
+                set({user:updatedData})
+        }
+        catch(e){
+            console.log(e)
+        }
+    },
+    updateBackground: async(body) => {
+        try{    
+                const response = await fetch('http://localhost:3000/api/user/update-bg',{
                     method: 'POST',
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify(body)

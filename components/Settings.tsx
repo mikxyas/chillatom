@@ -10,6 +10,7 @@ const Settings:React.FC = () => {
     const user = useUserStore(state => state.user)
     const [focusFor, setFocusFor] = useState(user.focusFor)
     const [chillFor, setChillFor] = useState(user.chillFor)
+    const updateBackground = useUserStore(state => state.updateBackground)
     const updatePomoTime = useUserStore(state => state.updatePomoTime)
 
     const showSettings = usePopup(state => state.showSettings)
@@ -31,6 +32,12 @@ const Settings:React.FC = () => {
         }
         updatePomoTime(object)
     }
+    const sendBackground = (keyword) => {
+        const obj = {
+            background: keyword
+        };
+        updateBackground(obj)
+    }   
     useEffect(() => {
         setFocusFor(user.focusFor)
         setChillFor(user.chillFor)
@@ -62,10 +69,17 @@ const Settings:React.FC = () => {
                     </div>
 
                     <div className='p-4 col-span-2 md:col-span-1 font-semibold shadow bg-opacity-20 rounded-xl flex flex-col'>
-                        <p className='text-xl'>Change Background</p>
-                        <input placeholder='Paste unsplash link here' className='bg-white border-2 mt-2 p-1 rounded border-black border-opacity-10'/>
-                        
-                        <button className='p-2 mt-2 rounded-md bg-opacity-60 hover:bg-opacity-100 text-white font-semibold text-sm bg-black'>Update</button>
+                        <p className='text-xl'>Select keyword for background</p>
+                        <div className='grid gap-2 grid-cols-3 items-center mt-3'>
+                            <div onClick={() => sendBackground("nature")} className='p-1 bg-gray-100 hover:bg-gray-200 cursor-pointer rounded-xl flex items-center justify-center'>Nature</div>
+                            <div onClick={() => sendBackground("sunset")} className='p-1 bg-gray-100 hover:bg-gray-200 cursor-pointer rounded-xl flex items-center justify-center'>Sunset</div>
+                            <div onClick={() => sendBackground("forest")} className='p-1 bg-gray-100 hover:bg-gray-200 cursor-pointer rounded-xl flex items-center justify-center'>Forest</div>
+                            <div onClick={() => sendBackground("mountain")} className='p-1 bg-gray-100 hover:bg-gray-200 cursor-pointer rounded-xl flex items-center justify-center'>Mountain</div>
+                            <div onClick={() => sendBackground("valley")} className='p-1 bg-gray-100 hover:bg-gray-200 cursor-pointer rounded-xl flex items-center justify-center'>Valley</div>
+                            <div onClick={() => sendBackground("snow")} className='p-1 bg-gray-100 hover:bg-gray-200 cursor-pointer rounded-xl flex items-center justify-center'>Snow</div>
+                        </div>
+                        <div className='flex text-xs mt-2 items-center justify-center text-center text-gray-500'>Your background will update daily based on the keyword you select</div>
+
                     </div>
                     <div className='p-4 col-span-2 md:col-span-1 font-semibold shadow bg-opacity-20 rounded-xl flex flex-col'>
                         <p className='text-xl'>Change Theme</p>

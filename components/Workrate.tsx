@@ -107,7 +107,7 @@ const Workrate:React.FC = () => {
                     <p className='text-3xl font-semibold'>Work Rate</p>
                     <i onClick={toggleWorkrate} className="gg-close-o cursor-pointer"></i>
                 </div>
-                <div className='md:flex col-span-2 gap-2 grid grid-cols-3 w-full'>
+                <div className='md:flex col-span-2 gap-2 md:justify-center justify-center grid grid-cols-3 w-full'>
                     <div className='bg-gray-100 p-4 rounded-lg'><h1 className='text-xl font-semibold'>{minuteTohour(focusLogSum.totFocusedMin)}</h1> <p>Focused</p></div>
                     <div className='bg-gray-100 p-4 rounded-lg'><h1 className='text-xl font-semibold'>{minuteTohour(focusLogSum.studiedFor)}</h1> <p>Studied</p></div>
                     <div className='bg-gray-100 p-4 rounded-lg'><h1 className='text-xl font-semibold'>{minuteTohour(focusLogSum.readFor)}</h1> <p>Read</p></div>
