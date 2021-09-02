@@ -83,14 +83,15 @@ const Settings:React.FC = () => {
                     </div>
                     <div className='p-4 col-span-2 md:col-span-1 font-semibold shadow bg-opacity-20 rounded-xl flex flex-col'>
                         <p className='text-xl'>Change Theme</p>
-                        <div className='flex mt-2 justify-around'>
-                            <div onClick={()=>handleTheme('bg-white')} className=' cursor-pointer w-12 h-12 border-2 border-black border-opacity-50 rounded-3xl bg-white'></div>
-                            <div onClick={()=>handleTheme('bg-purple-800')} className='cursor-pointer w-12 h-12 border-2 border-black border-opacity-50 rounded-3xl bg-purple-700'></div>
-                            <div onClick={()=>handleTheme('bg-blue-800')} className='cursor-pointer w-12 h-12 border-2 border-black border-opacity-50 rounded-3xl bg-blue-600'></div>
-                            <div onClick={()=>handleTheme('bg-red-800')} className='cursor-pointer w-12 h-12 border-2 border-black border-opacity-50 rounded-3xl bg-red-600'></div>
-                            <div onClick={()=>handleTheme('bg-pink-800')} className='cursor-pointer w-12 h-12 border-2 border-black border-opacity-50 rounded-3xl bg-pink-600'></div>
-                            <div onClick={()=>handleTheme('bg-transparent')} className='cursor-pointer w-12 h-12 border-2 border-black border-opacity-50 rounded-3xl bg-transparent'></div>
-                            <div onClick={()=>handleTheme('bg-black')} className='cursor-pointer w-12 h-12 border-2 border-black border-opacity-50 rounded-3xl bg-black'></div>
+                        <div className='grid grid-cols-3 justify-center mt-2 gap-2'>
+                            <div onClick={()=>handleTheme('bg-white')} className=' cursor-pointer flex justify-center items-center border-2 border-black border-opacity-20 rounded-xl bg-white p-1 font-bold'>White</div>
+                            <div onClick={()=>handleTheme('bg-purple-800')} className='cursor-pointer flex justify-center items-center border-2 border-black border-opacity-20 rounded-xl bg-purple-500 p-1 font-bold text-white'>Purple</div>
+                            <div onClick={()=>handleTheme('bg-blue-800')} className='cursor-pointer flex justify-center items-center  border-2 border-black border-opacity-20 rounded-xl bg-blue-500 p-1 font-bold text-white'>Blue</div>
+                            <div onClick={()=>handleTheme('bg-red-800')} className='cursor-pointer flex justify-center items-center  border-2 border-black border-opacity-20 rounded-xl bg-red-500 p-1 font-bold text-white'>Red</div>
+                            <div onClick={()=>handleTheme('bg-pink-800')} className='cursor-pointer flex justify-center items-center  border-2 border-black border-opacity-20 rounded-xl bg-pink-500 p-1 font-bold text-white'>Pink</div>
+                            <div onClick={()=>handleTheme('bg-black')} className='cursor-pointer flex justify-center items-center border-2 border-black border-opacity-50 rounded-xl bg-black p-1 font-bold text-white'>Black</div>
+                            <div onClick={()=>handleTheme('bg-transparent')} className='cursor-pointer flex justify-center items-center  border-2 border-black border-opacity-20 rounded-xl bg-transparent p-1 font-bold '>None</div>
+
                         </div>
                     </div>
                 </div>
