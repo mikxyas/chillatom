@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "./Button"
 import { useTestStore } from "../global-stores/useTestStore";
 import { useUserStore } from "../global-stores/useUserStore";
@@ -18,7 +18,7 @@ const Player: React.FC = () => {
     const [isPlaylist, setIsPlaylist] = useState(true)
     const [isVideo, setIsVideo] = useState(false)
 
-    const [liveCollectoin, setLiveCollection] = useState({})
+    const [liveCollectoin, setLiveCollection] = useState<{isPlaylist:Boolean}>({isPlaylist:null})
 
     const [video_id, vidValid] = useVideoID(url)
     const [playlist_id, pidValid] = usePlaylistId(url)
@@ -78,10 +78,10 @@ const Player: React.FC = () => {
     }
 
     useEffect(() => {
-        if(listeningTo==='nothing'){
+        if(String(listeningTo) ==='nothing'){
             setShowForm(true)
         }
-        collection.find(function(livecollection, index) {
+        Object(collection).find(function(livecollection, index) {
             if(livecollection.video_id === listeningTo){
                 setLiveCollection(livecollection)
             }
@@ -119,7 +119,7 @@ const Player: React.FC = () => {
             
             <div className='w-full md:w-4/12 h-full'>
                 <div className='flex flex-col items-start ml-2 md:ml-4 h-20 md:h-60  overflow-auto  overscroll-x-none w-full p-2'>
-                    {collection.map((col, key) => (
+                    {Object(collection).map((col, key) => (
                         <div key={key} className='cursor-pointer flex p-0 mb-1  items-center w-full text-2xl justify-center font-black text-white '>
                             {listeningTo === col.video_id
                                 ?<><i className='mr-2 mt-1 gg-music'/>

@@ -1,4 +1,5 @@
 import create from 'zustand'
+import { focusLog,focusLogSum } from '../model/focusLogs'
 
 function CompareDate(date1, date2){
     if(new Date(date1).getMonth() === new Date(date2).getMonth() && new Date(date1).getFullYear() === new Date(date2).getFullYear() && new Date(date1).getDay() === new Date(date2).getDay() && new Date(date1).getDate() === new Date(date2).getDate()){
@@ -9,12 +10,34 @@ function CompareDate(date1, date2){
 
 }
 
-export const useFocusLogStore = create((set, get) => ({
+
+interface focusStore  {
+    focusLogs:{
+    [key:string]:focusLog
+    };
+    latestFocusLog:{
+    [key:string]:focusLog
+    };
+    focusLogSum:{
+        [key:string]:focusLogSum
+    };
+    logsFetched:boolean;
+    error:boolean;
+    fetchFocusLog:any;
+    addFocusLog:any;
+    getLatestFocusLog:any;
+    updateFocusLog:any;
+    getSumFocusLog:any;
+    createFocusLog:boolean;
+}
+
+export const useFocusLogStore = create<focusStore>((set, get) => ({
     focusLogs:{},
     latestFocusLog:{},
     createFocusLog:true,
     focusLogSum:{},
     logsFetched:false,
+    error:false,
     fetchFocusLog: async FetchFocus => {
         try{
             const response = await fetch('http://localhost:3000/api/focusLog')
@@ -22,7 +45,7 @@ export const useFocusLogStore = create((set, get) => ({
             set({focusLogs: data, logsFetched:true})
         }
         catch(e){
-            set({error:true, userFetched:false, loading:false})
+            set({error:true, logsFetched:false})
         }
     },
     addFocusLog: async(body) => {
@@ -33,10 +56,10 @@ export const useFocusLogStore = create((set, get) => ({
                 body: JSON.stringify(body)
             })
             const addedData = await response.json()
-            set((state) => ({
-                focusLogs: [...state.focusLogs, {...addedData}],
+            set<any>((state) => ({
+                focusLogs: {...state.focusLogs, addedData},
                 latestFocusLog:{...addedData},
-                createFocusLog:false
+                createFocusLog:false,
             }))
             get().getSumFocusLog()
         }
@@ -53,7 +76,7 @@ export const useFocusLogStore = create((set, get) => ({
             set({latestFocusLog: {...focusLog[0]}})
             const currentDate = new Date()
             const startedDate = new Date(focusLog[0].startedAt)
-            set({createFocusLog: CompareDate(currentDate, startedDate)})
+            set<any>({createFocusLog: CompareDate(currentDate, startedDate)})
         }
         catch(e) {
             console.log(e)
@@ -82,7 +105,7 @@ export const useFocusLogStore = create((set, get) => ({
             console.log(data._sum)
         }
         catch(e){
-            set({error:true, userFetched:false, loading:false})
+            set({error:true})
         }
     }
 }))

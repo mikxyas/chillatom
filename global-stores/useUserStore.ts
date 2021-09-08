@@ -1,29 +1,24 @@
 import create from "zustand";
+import {UserProp} from '../model/user'
 
-type UserProp = {
-    name:string,
-    collection:object,
-    Fortnight:object,
-    listeningTo: string,
-    focusingOn: string,
-    focusFor:string,
-    chillFor:string,
-}
-type User = {
-    user:UserProp[];
+
+interface User  {
+    user:{
+        [key: string]:UserProp
+    };
     fetch:any;
-    userFetched:boolean,
-    loading:boolean,
-    error:boolean,
-    updateListeningTo:any,
-    updatePomoTime:any,
-    updateFocusingOn: any,
-    updateTheme:any,
-    updateBackground:any,
+    userFetched:boolean;
+    loading:boolean;
+    error:boolean;
+    updateListeningTo:any;
+    updatePomoTime:any;
+    updateFocusingOn: any;
+    updateTheme:any;
+    updateBackground:any;
 }
 
 export const useUserStore = create<User>(set => ({
-    user:[],
+    user:{},
     userFetched:false,
     loading:false,
     error:false,

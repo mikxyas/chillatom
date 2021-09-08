@@ -6,23 +6,34 @@ import Settings from './Settings'
 import Profile from './Profile'
 import { useUserStore } from '../global-stores/useUserStore'
 import { useCollectionStore } from '../global-stores/useCollectionStore'
+import { useFocusLogStore } from '../global-stores/useFocusLogStore'
 import { usePopup } from '../global-stores/usePopup'
 import Workrate from './Workrate'
+
 
 const Header:React.FC = () => {
     const fetchuser = useUserStore(state => state.fetch)
     const fetchCollection = useCollectionStore(state => state.fetchCollection)
     const [session, loading] = useSession();
     const toggleSettings = usePopup(state => state.toggleSettings)
+    const fetchFocusLog = useFocusLogStore(state => state.fetchFocusLog)
+    const getLatestFocusLog = useFocusLogStore(state => state.getLatestFocusLog)
+    const getSumFocusLog = useFocusLogStore(state => state.getSumFocusLog)
 
     const user = useUserStore(state=> state.user)
 
     const toggleWorkrate = usePopup(state => state.toggleWorkrate)
 
     useEffect(() => {
-        fetchuser()
-        fetchCollection()
-        console.log('fetching everything')
+        async function intitialFetch()  {
+            await fetchuser()
+            await fetchCollection()
+            await fetchFocusLog()
+            await getLatestFocusLog()
+            await getSumFocusLog()
+            console.log('fetching everything')
+        }
+        intitialFetch()
     },[])
     return(
         <>

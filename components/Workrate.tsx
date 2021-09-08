@@ -80,11 +80,11 @@ const Workrate:React.FC = () => {
     const focusLogs = useFocusLogStore(state => state.focusLogs)
     const logsFetched = useFocusLogStore(state => state.logsFetched)
     const latestFocusLog = useFocusLogStore(state => state.latestFocusLog)
-    const [calanderData, setCalanderData] = useState({})
+    const [calanderData, setCalanderData] = useState<any>({})
     useEffect(() => {
         function CreateCalandarData() {
             let bag = []
-            focusLogs.forEach(log => {
+            Object(focusLogs).forEach(log => {
                 const obj = {
                     "day": log.startedAt.split('T')[0],
                     "value": log.totFocusedMin
@@ -117,8 +117,8 @@ const Workrate:React.FC = () => {
                 <div  style={{ width: '100%', height: '10em' }} className=' bg-transparent flex h-full col-span-2'>
                     {focusLogs[0] != undefined 
                         ?<ResponsiveCalendar data={calanderData}
-                        from={user.createdAt}
-                        to={latestFocusLog.startedAt}
+                        from={String(user.createdAt)}
+                        to={String(latestFocusLog.startedAt)}
                         emptyColor="#e8e8e8"
                         colors={[ '#61cdbb', '#97e3d5', '#e8c1a0', '#f47560' ]}
                         margin={{ top: 0, right: 0, bottom: 0, left: 0 }}

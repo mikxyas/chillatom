@@ -1,17 +1,36 @@
 import create from 'zustand'
+import { collectionProp } from '../model/collection'
+import { focusLog } from '../model/focusLogs'
 
-export const useCollectionStore = create((set, get) => ({
-    collection:[],
+interface collectionStore {
+    collection:{
+        [key:string]:collectionProp
+    };
+    loading_collection:boolean;
+    error:boolean;
+    fetchCollection:any;
+    AddCollection:any;
+    deleteCollection:any;
+    collection_fetched:boolean;
+
+}
+
+export const useCollectionStore = create<collectionStore>((set, get) => ({
+    collection:{},
     loading_collection:false,
     error:false,
+    collection_fetched:false,
     fetchCollection: async FetchColl => {
         try{
             set({loading_collection:true})
             const response = await fetch('http://localhost:3000/api/collection/get-coll/')
-            set({collection: await response.json(),loading_collection:false})
+            const data = await response.json()
+            set({collection: data,loading_collection:false, collection_fetched:true})
+            console.log(data)
         }
         catch(e){
-            set({error:true, userFetched:false, loading:false})
+            console.log(e)
+            set({error:true, loading_collection:false, collection_fetched:false})
         }
     },
     AddCollection: async(body) => {
@@ -23,8 +42,8 @@ export const useCollectionStore = create((set, get) => ({
                 body: JSON.stringify(body)
             })
             const addedData = await response.json()
-            set((state) => ({
-                collection: [...state.collection, {...addedData}]
+            set<any>((state) => ({
+                collection: {...state.collection, addedData}
             }))
         }
         catch(e){
@@ -34,14 +53,15 @@ export const useCollectionStore = create((set, get) => ({
     },
     deleteCollection: async(id, key) => {
         try{
+            set((state) => ({
+                collection: Object(state.collection).filter((coll, id) => id !== key)
+            }))
             const response = await fetch(`http://localhost:3000/api/collection/${id}`, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },
-              });
+            });
             const res = await response.json();
-            set((state) => ({
-                collection: state.collection.filter((coll, id) => id !== key)
-            }))
+            
         }
         catch(e){
             console.log(e)
