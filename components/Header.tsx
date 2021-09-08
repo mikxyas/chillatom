@@ -9,7 +9,7 @@ import { useCollectionStore } from '../global-stores/useCollectionStore'
 import { useFocusLogStore } from '../global-stores/useFocusLogStore'
 import { usePopup } from '../global-stores/usePopup'
 import Workrate from './Workrate'
-
+import Link from 'next/link'
 
 const Header:React.FC = () => {
     const fetchuser = useUserStore(state => state.fetch)
@@ -45,7 +45,8 @@ const Header:React.FC = () => {
                 ?<Button name='Loading...'/>
                 :<>
                     {!session && <>
-                        <div onClick={() => signIn()}><Button name='Sign In'/></div>
+                        
+                        <Link href="/login"><div><Button name='Sign In'/></div></Link>
                         </>}
                         {session && <>
                         <div className='flex md:justify-end w-full justify-start'>
