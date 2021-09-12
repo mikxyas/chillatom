@@ -11,7 +11,8 @@ export default async function handle(req: NextApiRequest, res:NextApiResponse){
           res.statusCode = 403;
           return { props: { user: [] } };
         }
-        const user = await prisma.user.update({
+        try{
+          const user = await prisma.user.update({
             where: {
               email:session.user.email
             },
@@ -20,4 +21,9 @@ export default async function handle(req: NextApiRequest, res:NextApiResponse){
             }
         });
         res.json(user)
+        }
+        catch(e){
+          console.log(e)
+        }
+        
 }

@@ -6,9 +6,14 @@ import { getSession } from 'next-auth/client'
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
     const session = await getSession({ req });
     const theme = req.body.theme
-    const user = await prisma.user.update({
-        where: { email: session.user.email },
-        data: { theme: theme },
-    });
-    res.json(user);
+    try{
+        const user = await prisma.user.update({
+            where: { email: session.user.email },
+            data: { theme: theme },
+        });
+        res.json(user);
+    }
+    catch(e){
+        console.log(e)
+    }
 }

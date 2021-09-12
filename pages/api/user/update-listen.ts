@@ -6,9 +6,15 @@ import { getSession } from 'next-auth/client'
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
     const session = await getSession({ req });
     const video_id = req.body.video_id
-    const user = await prisma.user.update({
-        where: { email: session.user.email },
-        data: { listeningTo: video_id },
-    });
-    res.json(user);
+    try{
+        const user = await prisma.user.update({
+            where: { email: session.user.email },
+            data: { listeningTo: video_id },
+        });
+        res.json(user);
+    }
+    catch(e){
+        console.log(e)
+    }
+   
 }

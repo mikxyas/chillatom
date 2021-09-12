@@ -9,7 +9,8 @@ export default async function handle(req: NextApiRequest, res:NextApiResponse){
           res.statusCode = 403;
           return { props: { focusLog: [] } };
         }
-        const focusLog = await prisma.focusLog.findMany({
+        try{
+          const focusLog = await prisma.focusLog.findMany({
             where: {
               creator: {email: session.user.email}
             },
@@ -19,4 +20,9 @@ export default async function handle(req: NextApiRequest, res:NextApiResponse){
             take: 1
         });
         res.json(focusLog)
+        }
+        catch(e){
+          console.log(e)
+        }
+        
       }

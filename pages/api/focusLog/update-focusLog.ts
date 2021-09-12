@@ -7,18 +7,23 @@ import { getSession } from 'next-auth/client'
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
     const {focusedMin, action, id} = req.body
     const session = await getSession({ req });
-    const focusLog = await prisma.focusLog.update({
-        where:{
-            id:id
-        }, 
-        data:{
-            [action]:{
-                increment:focusedMin
-            },
-            totFocusedMin:{
-                increment:focusedMin
-            },
-        }
-    });
-    res.json(focusLog);
+    try{
+        const focusLog = await prisma.focusLog.update({
+            where:{
+                id:id
+            }, 
+            data:{
+                [action]:{
+                    increment:focusedMin
+                },
+                totFocusedMin:{
+                    increment:focusedMin
+                },
+            }
+        });
+        res.json(focusLog);
+    }
+    catch(e){
+        console.log(e)
+    }
     }
