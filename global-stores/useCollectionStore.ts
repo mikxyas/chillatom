@@ -23,7 +23,7 @@ export const useCollectionStore = create<collectionStore>((set, get) => ({
     fetchCollection: async FetchColl => {
         try{
             set({loading_collection:true})
-            const response = await fetch('http://localhost:3000/api/collection/get-coll/')
+            const response = await fetch('api/collection/get-coll/')
             const data = await response.json()
             set({collection: data,loading_collection:false, collection_fetched:true})
             console.log(data)
@@ -36,7 +36,7 @@ export const useCollectionStore = create<collectionStore>((set, get) => ({
     AddCollection: async(body) => {
         try{
             set({loading_collection: true})
-            const response = await fetch('http://localhost:3000/api/collection/add-coll/',{
+            const response = await fetch('api/collection/add-coll/',{
                 method:'POST',
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
@@ -56,7 +56,7 @@ export const useCollectionStore = create<collectionStore>((set, get) => ({
             set((state) => ({
                 collection: Object(state.collection).filter((coll, id) => id !== key)
             }))
-            const response = await fetch(`http://localhost:3000/api/collection/${id}`, {
+            const response = await fetch(`api/collection/${id}`, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },
             });

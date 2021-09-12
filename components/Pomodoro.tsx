@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useFocusLogStore } from "../global-stores/useFocusLogStore";
 import { useUserStore } from "../global-stores/useUserStore";
 import Button from "./Button"
+import ProgressBar from "./ProgressBar";
 
 const Pomodoro:React.FC = () => {
     const user = useUserStore(state => state.user)
@@ -130,6 +131,7 @@ const Pomodoro:React.FC = () => {
 
     return(
         <div className='flex items-center h-full justify-center flex-col'>
+            {/* <ProgressBar time={minutes}/> */}
             <div className='md:flex-col flex w-full justify-between items-center'>
             {!breakTime 
             ?<div className='text-white font-bold text-6xl md:text-8xl md:mb-5'>{Number(minutes) === 0 ? "00" :Number(minutes) <10 ? "0" + minutes:minutes}:{seconds === 0 ? "00" : seconds < 10 ? "0" + seconds : seconds} </div> 
@@ -143,7 +145,6 @@ const Pomodoro:React.FC = () => {
                         ?<p>Focus on {user.focusingOn}</p>
                         :<p>Time to chill</p>
                     }
-                    
                 </div>
             </div>
         </div>

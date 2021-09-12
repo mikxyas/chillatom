@@ -40,7 +40,7 @@ export const useFocusLogStore = create<focusStore>((set, get) => ({
     error:false,
     fetchFocusLog: async FetchFocus => {
         try{
-            const response = await fetch('http://localhost:3000/api/focusLog')
+            const response = await fetch('api/focusLog')
             const data = await response.json()
             set({focusLogs: data, logsFetched:true})
         }
@@ -50,7 +50,7 @@ export const useFocusLogStore = create<focusStore>((set, get) => ({
     },
     addFocusLog: async(body) => {
         try{
-            const response = await fetch('http://localhost:3000/api/focusLog/add-focusLog/',{
+            const response = await fetch('api/focusLog/add-focusLog/',{
                 method:'POST',
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
@@ -70,7 +70,7 @@ export const useFocusLogStore = create<focusStore>((set, get) => ({
     getLatestFocusLog: async getLatest => {
         try{
             console.log('fetching latest focus log')
-            const response = await fetch('http://localhost:3000/api/focusLog/get-latest-focusLog')
+            const response = await fetch('api/focusLog/get-latest-focusLog')
             const focusLog = await response.json()
             console.log(focusLog)
             set({latestFocusLog: {...focusLog[0]}})
@@ -85,7 +85,7 @@ export const useFocusLogStore = create<focusStore>((set, get) => ({
     updateFocusLog: async(data) => {
         console.log(data)
         try {
-            const resp= await fetch('http://localhost:3000/api/focusLog/update-focusLog', {
+            const resp= await fetch('api/focusLog/update-focusLog', {
                 method: 'PUT',
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(data)
@@ -99,7 +99,7 @@ export const useFocusLogStore = create<focusStore>((set, get) => ({
     },
     getSumFocusLog: async getdata => {
         try{
-            const response = await fetch('http://localhost:3000/api/focusLog/aggregate-focusLogs')
+            const response = await fetch('api/focusLog/aggregate-focusLogs')
             const data = await response.json()
             set({focusLogSum: data._sum})
             console.log(data._sum)

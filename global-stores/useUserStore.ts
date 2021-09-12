@@ -25,7 +25,7 @@ export const useUserStore = create<User>(set => ({
     fetch: async FetchData => {
         try{
             set({loading:true})
-            const response = await fetch('http://localhost:3000/api/user')
+            const response = await fetch('api/user')
             set({user: await response.json(), userFetched:true,loading:false})
         }
         catch(e){
@@ -34,7 +34,7 @@ export const useUserStore = create<User>(set => ({
     },
     updateListeningTo: async(video_id) => {
         try{
-            const response = await fetch('http://localhost:3000/api/user/update-listen',{
+            const response = await fetch('api/user/update-listen',{
                 method:'PUT',
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({video_id:video_id})
@@ -49,7 +49,7 @@ export const useUserStore = create<User>(set => ({
     updatePomoTime: async(body) => {
         try{    
 
-                const response = await fetch('http://localhost:3000/api/user/update-pomo',{
+                const response = await fetch('api/user/update-pomo',{
                     method: 'POST',
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify(body)
@@ -63,7 +63,7 @@ export const useUserStore = create<User>(set => ({
     },
     updateBackground: async(body) => {
         try{    
-                const response = await fetch('http://localhost:3000/api/user/update-bg',{
+                const response = await fetch('api/user/update-bg',{
                     method: 'POST',
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify(body)
@@ -77,7 +77,7 @@ export const useUserStore = create<User>(set => ({
     },
     updateFocusingOn: async(body) => {
         try{    
-                const response = await fetch('http://localhost:3000/api/user/update-focusing',{
+                const response = await fetch('api/user/update-focusing',{
                     method: 'POST',
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify(body)
@@ -91,7 +91,7 @@ export const useUserStore = create<User>(set => ({
     },
     updateTheme: async(data) => {
         try{    
-            const response = await fetch('http://localhost:3000/api/user/update-theme',{
+            const response = await fetch('api/user/update-theme',{
                 method: 'POST',
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(data)

@@ -9,7 +9,8 @@ type Props = {
 }
 const Layout: React.FC<Props> = (props) => {
     const user = useUserStore(state => state.user)
-    const imageLink = `https://source.unsplash.com/daily?${user.background}`
+    const imageLink = `https://source.unsplash.com/Hyu76loQLdk/1440x1080`
+    // const imageLink = `https://source.unsplash.com/daily?${user.background}`
     return(
         <div style={{backgroundImage:`url(${imageLink})`}} className='bg-img'>
             
