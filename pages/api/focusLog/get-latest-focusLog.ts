@@ -7,7 +7,7 @@ export default async function handle(req: NextApiRequest, res:NextApiResponse){
         const session = await getSession({ req });
         if (!session) {
           res.statusCode = 403;
-          return { props: { fortnight: [] } };
+          return { props: { focusLog: [] } };
         }
         const focusLog = await prisma.focusLog.findMany({
             where: {

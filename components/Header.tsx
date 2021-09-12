@@ -26,12 +26,16 @@ const Header:React.FC = () => {
 
     useEffect(() => {
         async function intitialFetch()  {
+            console.log('fetching user')
             await fetchuser()
+            console.log('fetching collection')
             await fetchCollection()
+            console.log('fetching focus log')
             await fetchFocusLog()
+            console.log('fetching latest focus log')
             await getLatestFocusLog()
+            console.log('fetching focus sum')
             await getSumFocusLog()
-            console.log('fetching everything')
         }
         intitialFetch()
     },[])
