@@ -131,14 +131,14 @@ const Pomodoro:React.FC = () => {
 
     return(
         <div className='flex items-center h-full justify-center flex-col'>
-            <div className='md:flex-col flex w-full justify-between items-center'>
+            <div className='lg:flex-col flex w-full justify-between items-center'>
             {!breakTime 
-            ?<div className='text-white font-bold text-6xl md:text-8xl md:mb-5'>{Number(minutes) === 0 ? "00" :Number(minutes) <10 ? "0" + minutes:minutes}:{seconds === 0 ? "00" : seconds < 10 ? "0" + seconds : seconds} </div> 
-            :<div className='text-white font-bold text-6xl md:text-8xl md:mb-5'>{Number(breakMinutes) === 0 ? "00" :Number(breakMinutes) <10 ? "0" + breakMinutes:breakMinutes}:{breakSeconds === 0 ? "00" : breakSeconds < 10 ? "0" + breakSeconds : breakSeconds}</div>}
+            ?<div className='text-white font-bold text-6xl lg:text-8xl lg:mb-5'>{Number(minutes) === 0 ? "00" :Number(minutes) <10 ? "0" + minutes:minutes}:{seconds === 0 ? "00" : seconds < 10 ? "0" + seconds : seconds} </div> 
+            :<div className='text-white font-bold text-6xl lg:text-8xl lg:mb-5'>{Number(breakMinutes) === 0 ? "00" :Number(breakMinutes) <10 ? "0" + breakMinutes:breakMinutes}:{breakSeconds === 0 ? "00" : breakSeconds < 10 ? "0" + breakSeconds : breakSeconds}</div>}
             <div onClick={() => setStartTimer(!startTimer)}><Button name={startTimer === true ? "Stop" :"Start"}/></div>
             </div>
             <div className='mt-4 w-full pl-3 pr-3'>
-                <div className='text-white font-bold flex md:flex-col  w-full justify-between text-center'>
+                <div className='text-white font-bold flex lg:flex-col  w-full justify-between text-center'>
                     <p>Sessions {sessionCounter}</p>
                     {!breakTime
                         ?<p>Focus on {user.focusingOn}</p>

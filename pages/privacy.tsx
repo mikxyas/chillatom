@@ -1,7 +1,7 @@
 export default function Privacy() {
     return(
         <div className='flex items-center p-2 justify-center '>
-            <div style={{height:'650px'}} className='p-3 mt-3 font-mono text-black flex-col bg-white w-full md:w-2/5  rounded-lg overflow-y-scroll'>
+            <div style={{height:'650px'}} className='p-3 mt-3 font-mono text-black flex-col bg-white w-full lg:w-2/5  rounded-lg overflow-y-scroll'>
                 <h1 className='mt-1 text-3xl'>Privacy</h1>
                 <p className='mt-3'>Effective date: September 10, 2021</p>
                 <p className='mt-3'>
