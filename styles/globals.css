@@ -200,7 +200,7 @@ nav .aqua-effect::before{
   
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #ffffffa1;
+    background: #7e7d7da1;
     border-radius: 100vh;
     
   }
