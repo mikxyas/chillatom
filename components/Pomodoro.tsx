@@ -131,7 +131,6 @@ const Pomodoro:React.FC = () => {
 
     return(
         <div className='flex items-center h-full justify-center flex-col'>
-            {/* <ProgressBar time={minutes}/> */}
             <div className='md:flex-col flex w-full justify-between items-center'>
             {!breakTime 
             ?<div className='text-white font-bold text-6xl md:text-8xl md:mb-5'>{Number(minutes) === 0 ? "00" :Number(minutes) <10 ? "0" + minutes:minutes}:{seconds === 0 ? "00" : seconds < 10 ? "0" + seconds : seconds} </div> 
