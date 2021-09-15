@@ -157,7 +157,7 @@ nav .aqua-effect::before{
        border-radius: 10px
    }
    .gg-music::after {
-       left: 5px
+       left: 5px;
    }
 
    .gg-time {

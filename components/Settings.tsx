@@ -79,7 +79,7 @@ const Settings:React.FC = () => {
                         </div>
                         <button onClick={() => sendTime()} className='p-2 mt-2 rounded-md w-full bg-opacity-60 hover:bg-opacity-100 text-white font-semibold text-sm bg-black'>Update</button>
                     </div>
-
+{/* 
                     <div className='p-4 col-span-2 lg:col-span-1 font-semibold shadow bg-opacity-20 rounded-xl flex flex-col'>
                         <p className='text-xl'>Select keyword for background</p>
                         <div className='grid gap-2 grid-cols-3 items-center mt-3'>
@@ -92,17 +92,17 @@ const Settings:React.FC = () => {
                         </div>
                         <div className='flex text-xs mt-2 items-center justify-center text-center text-gray-500'>Your background will update daily based on the keyword you select</div>
 
-                    </div>
+                    </div> */}
                     <div className='p-4 col-span-2 lg:col-span-1 font-semibold shadow bg-opacity-20 rounded-xl flex flex-col'>
                         <p className='text-xl'>Change Theme</p>
-                        <div className='grid grid-cols-3 justify-center mt-2 gap-2'>
+                        <div className='grid grid-cols-2 justify-center mt-2 gap-2'>
                             <div onClick={()=>handleTheme('bg-white')} className=' cursor-pointer flex justify-center items-center border-2 border-black border-opacity-20 rounded-xl bg-white p-1 font-bold aqua-effect relative'>White</div>
                             <div onClick={()=>handleTheme('bg-purple-800')} className='cursor-pointer flex justify-center items-center border-2 border-black border-opacity-20 rounded-xl bg-purple-500 p-1 font-bold text-white aqua-effect relative'>Purple</div>
                             <div onClick={()=>handleTheme('bg-blue-800')} className='cursor-pointer flex justify-center items-center  border-2 border-black border-opacity-20 rounded-xl bg-blue-500 p-1 font-bold text-white aqua-effect relative'>Blue</div>
                             <div onClick={()=>handleTheme('bg-red-800')} className='cursor-pointer flex justify-center items-center  border-2 border-black border-opacity-20 rounded-xl bg-red-500 p-1 font-bold text-white aqua-effect relative'>Red</div>
                             <div onClick={()=>handleTheme('bg-pink-800')} className='cursor-pointer flex justify-center items-center  border-2 border-black border-opacity-20 rounded-xl bg-pink-500 p-1 font-bold text-white aqua-effect relative'>Pink</div>
                             <div onClick={()=>handleTheme('bg-black')} className='cursor-pointer flex justify-center items-center border-2 border-black border-opacity-50 rounded-xl bg-black p-1 font-bold text-white aqua-effect relative'>Black</div>
-                            <div onClick={()=>handleTheme('bg-transparent')} className='cursor-pointer flex justify-center items-center  border-2 border-black border-opacity-20 rounded-xl bg-transparent p-1 font-bold aqua-effect relative'>None</div>
+                            <div onClick={()=>handleTheme('bg-transparent')} className='cursor-pointer flex justify-center items-center  border-2 border-black border-opacity-20 rounded-xl bg-transparent p-1 font-bold aqua-effect relative'>Transparent</div>
 
                         </div>
                     </div>

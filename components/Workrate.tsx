@@ -120,7 +120,7 @@ const Workrate:React.FC = () => {
                         from={String(user.createdAt)}
                         to={String(latestFocusLog.startedAt)}
                         emptyColor="#e8e8e8"
-                        colors={[ '#61cdbb', '#97e3d5', '#e8c1a0', '#f47560' ]}
+                        colors={[ '#39d35377', '#39d3539f', '#39d353c4', '#39D353' ]}
                         margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
                         yearSpacing={35}
                         yearLegendOffset={9}
