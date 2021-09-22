@@ -4,6 +4,7 @@ import Pomodoro from '../components/Pomodoro'
 import Player from '../components/Player'
 import { useUserStore } from '../global-stores/useUserStore'
 import { useCollectionStore } from '../global-stores/useCollectionStore'
+import About from './about'
 
 export default function Home() {
   const loading = useUserStore(state => state.loading) 
@@ -19,7 +20,8 @@ export default function Home() {
             <div className='col-span-2'><Card content={<Pomodoro/>}/></div>
             <div className='col-span-3'><Card content={<Player/>}/></div>    
           </div>
-        :<h1>Loading</h1>
+          :<About/>
+        // :<h1>Loading</h1>
       }
     </div>
   )

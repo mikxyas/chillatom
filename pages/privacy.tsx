@@ -5,7 +5,7 @@ export default function Privacy() {
                 <h1 className='mt-1 text-3xl'>Privacy</h1>
                 <p className='mt-3'>Effective date: September 10, 2021</p>
                 <p className='mt-3'>
-                    Chillatom ("us", "we", or "our") operates the https://chillatom.com website (hereinafter referred to as the "Service").
+                    Chillatom (&quot;us&quot;, &quot;we&quot;, or &quot;our&quot;) operates the https://chillatom.com website (hereinafter referred to as the &quot;Service&quot;).
                 </p>
                 <p className='mt-3'>
                     This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.
@@ -23,7 +23,7 @@ export default function Privacy() {
                 <p className='mt-3 text-xl'>Personal Data</p>
                 <p className='mt-3'>While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to identify you. Personally identifiable information may include, but is not limited to: Cookies and Usage Data</p>
                 <p className='mt-3 text-xl'>Usage Data</p>
-                <p className='mt-3'>We may also collect information on how the Service is accessed and used ("Usage Data"). This Usage Data may include information such as your computer's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>
+                <p className='mt-3'>We may also collect information on how the Service is accessed and used (&quot;Usage Data&quot;). This Usage Data may include information such as your computer's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>
                 <p className='mt-3 text-xl'>Tracking and Cookies Data</p>
                 <p className='mt-3'> 
                     We use cookies and similar tracking technologies to track the activity on our Service and hold certain information.
@@ -98,7 +98,7 @@ export default function Privacy() {
                 To comply with a legal obligation
                 </p> 
                 <p className='mt-2 ml-5'>
-                To protect and defend the rights or property of Pomofocus
+                To protect and defend the rights or property of Chillatom
                 </p>
                 <p className='mt-2 ml-5'>
                 To prevent or investigate possible wrongdoing in connection with the Service
@@ -114,11 +114,11 @@ export default function Privacy() {
                 </p>
                 <p className='mt-3'>The security of your data is important to us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Data, we cannot guarantee its absolute security.</p>
                 <p className='mt-3 text-2xl'>Service Providers</p>
-                <p className='mt-3'>We may employ third party companies and individuals to facilitate our Service ("Service Providers"), to provide the Service on our behalf, to perform Service-related services or to assist us in analyzing how our Service is used.</p>
+                <p className='mt-3'>We may employ third party companies and individuals to facilitate our Service (&quot;Service Providers&quot;), to provide the Service on our behalf, to perform Service-related services or to assist us in analyzing how our Service is used.</p>
                 <p className='mt-3'>These third parties have access to your Personal Data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.</p>
                 <p className='mt-3 text-2xl'> Changes To This Privacy Policy</p>
                 <p className='mt-3'>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
-                <p className='mt-3'>We will let you know via email and/or a prominent notice on our Service, prior to the change becoming effective and update the "effective date" at the top of this Privacy Policy.</p>
+                <p className='mt-3'>We will let you know via email and/or a prominent notice on our Service, prior to the change becoming effective and update the &quot;effective date&quot; at the top of this Privacy Policy.</p>
                 <p className='mt-3'>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
                 <p className='text-2xl mt-3'>Contact Us</p>
                 <p className="mt-3">If you have any questions about this Privacy Policy, please contact us by sending email to: mikiyas.dev@gmail.com</p>
