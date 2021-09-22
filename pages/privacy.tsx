@@ -23,7 +23,7 @@ export default function Privacy() {
                 <p className='mt-3 text-xl'>Personal Data</p>
                 <p className='mt-3'>While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to identify you. Personally identifiable information may include, but is not limited to: Cookies and Usage Data</p>
                 <p className='mt-3 text-xl'>Usage Data</p>
-                <p className='mt-3'>We may also collect information on how the Service is accessed and used (&quot;Usage Data&quot;). This Usage Data may include information such as your computer's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>
+                <p className='mt-3'>We may also collect information on how the Service is accessed and used (&quot;Usage Data&quot;). This Usage Data may include information such as your computer&apos;s Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>
                 <p className='mt-3 text-xl'>Tracking and Cookies Data</p>
                 <p className='mt-3'> 
                     We use cookies and similar tracking technologies to track the activity on our Service and hold certain information.
