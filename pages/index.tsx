@@ -15,10 +15,12 @@ export default function Home() {
   return (
     <div className='flex lg:mt-7 mt-2 justify-center items-center'>
       {loading===false && userFetched === true && coll_loading ===false && coll_fetched === true
-        ? <div className='lg:grid lg:grid-cols-3 gap-4 w-full lg:pl-0 lg:pr-0 pl-2 pr-2 lg:w-2/5'>
+        ?<div style={{width:'50em'}}> 
+          <div className='lg:grid lg:grid-cols-3 gap-4 w-full lg:pl-0 lg:pr-0 pl-2 pr-2'>
             <div className=''><Card content={<Habit/>}/></div>
             <div className='col-span-2'><Card content={<Pomodoro/>}/></div>
             <div className='col-span-3'><Card content={<Player/>}/></div>    
+          </div>
           </div>
           :<About/>
         // :<h1>Loading</h1>

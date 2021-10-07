@@ -43,8 +43,10 @@ const Header:React.FC = () => {
         <>
         <Settings/>
         <Workrate/>
-        <nav className='flex justify-center mt-4 lg:p-0 p-2'>
-            <div className={` ${user.theme} z-10 bg-opacity-20 bg-clip-padding backdrop-filter backdrop-blur-md shadow-lg backdrop-saturate-150  border-none flex justify-end items-center w-full lg:w-2/5  h-14 p-2 rounded aqua-effect`}>
+        <div className='flex items-center justify-center w-full'>
+        <div style={{width:'50em', }} >
+        <nav  className='flex justify-center mt-4 lg:p-0 p-2'>
+            <div className={` ${user.theme} z-10 bg-opacity-20 bg-clip-padding backdrop-filter backdrop-blur-md shadow-lg backdrop-saturate-150  border-none flex justify-end items-center w-full   h-14 p-2 rounded aqua-effect`}>
             {loading
                 ?<Button name='Loading...'/>
                 :<>
@@ -70,6 +72,8 @@ const Header:React.FC = () => {
             }
             </div>
         </nav>
+        </div>
+        </div>
         </>
     )
 }

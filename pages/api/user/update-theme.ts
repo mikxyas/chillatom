@@ -12,8 +12,12 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
             data: { theme: theme },
         });
         res.json(user);
+        res.status(200).end()
+
     }
     catch(e){
         console.log(e)
+        res.status(500).end()
+
     }
 }

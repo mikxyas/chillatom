@@ -12,9 +12,12 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
             data: { listeningTo: video_id },
         });
         res.json(user);
+        res.status(200).end()
     }
     catch(e){
         console.log(e)
+        res.status(500).end()
+
     }
    
 }
