@@ -13,6 +13,9 @@ export default async function handler (req: NextApiRequest, res: NextApiResponse
           readFor:true,
           totFocusedMin:true,
         },
+        where:{
+          creator: {email: session.user.email}
+        }
       })
     res.json(aggregations)
     res.status(200).end()

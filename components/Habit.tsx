@@ -9,6 +9,9 @@ export function minuteTohour(time) {
         // return minutes
         return '0 seconds'
     }
+    if(time == null){
+        return '0 seconds'
+    }
     if(time < 60){
         // return minutes
         return time +' minutes'
