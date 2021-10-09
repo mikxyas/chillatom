@@ -13,7 +13,7 @@ export default function Home() {
   const userFetched = useUserStore(state => state.userFetched) 
   const error = useUserStore(state => state.error) 
   return (
-    <div className='flex lg:mt-7 mt-2 justify-center items-center'>
+    <div className='flex mt-2 justify-center items-center'>
       {loading===false && userFetched === true && coll_loading ===false && coll_fetched === true
         ?<div style={{width:'50em'}}> 
           <div className='lg:grid lg:grid-cols-3 gap-4 w-full lg:pl-0 lg:pr-0 pl-2 pr-2'>

@@ -99,7 +99,9 @@ nav .aqua-effect::before{
     border-radius: 20px;
 } */
 
-
+.round-img {
+    border-radius: 5px;
+}
 
 
 .gg-check {

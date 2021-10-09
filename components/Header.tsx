@@ -23,6 +23,7 @@ const Header:React.FC = () => {
     const user = useUserStore(state=> state.user)
 
     const toggleWorkrate = usePopup(state => state.toggleWorkrate)
+    const toggleProfile = usePopup(state => state.toggleProfile)
 
     useEffect(() => {
         async function intitialFetch()  {
@@ -42,37 +43,28 @@ const Header:React.FC = () => {
     return(
         <>
         <Settings/>
-        <Workrate/>
-        <div className='flex items-center justify-center w-full'>
-        <div style={{width:'50em', }} >
-        <nav  className='flex justify-center mt-4 lg:p-0 p-2'>
-            <div className={` ${user.theme} z-10 bg-opacity-20 bg-clip-padding backdrop-filter backdrop-blur-md shadow-lg backdrop-saturate-150  border-none flex justify-end items-center w-full   h-14 p-2 rounded aqua-effect`}>
-            {loading
-                ?<Button name='Loading...'/>
-                :<>
-                    {!session && <>
-                        
-                        <Link href="/login"><div><Button name='Sign In'/></div></Link>
-                        </>}
-                        {session && <>
-                        <div className='flex lg:justify-end w-full justify-start'>
-                            {/* <div  className='ml-2' onClick={() => signOut()}><Button name='Sign Out'/></div> */}
-                            <div onClick={toggleWorkrate} className='ml-2'>
-                                <Button name='Work rate'/>
-                            </div>
-                            <div onClick={toggleSettings} className='ml-2'>
-                                <Button name='Settings'/>
-                            </div>
+        <Profile/>
+        <div className='flex items-center justify-center w-full mt-2'>
+            <div style={{width:'50em', }} className='flex rounded-2xl h-18 aqua-effect relative bg-clip-padding backdrop-filter backdrop-blur-lg shadow-sm backdrop-saturate-150  justify-between'>
+                <div  className='flex p-1 cursor-pointer items-center justify-center rounded-2xl pl-2 pr-2 '>
+                    <Image width={58} height={38} src='/facebook.png'/>
+                    <p className='text-xl text-white font-bold mr-2'>Chillatom</p>
+                </div>
+                <div onClick={() => toggleProfile()} className='p-1 cursor-pointer rounded-2xl '>
+                {session && 
+                        <div className='flex pl-3 pr-3 pt-1 pb-1  justify-around'>
+                        <div>
+                            <p  className='text-xl p-0 text-white font-bold'>Mikiyas Ayele</p>
+                            <p style={{marginTop:'-.15em'}} className='text-sm font-mono mb-1 p-0 text-white'>Focused 12 minutes</p>
                         </div>
-                      
-                        <Profile image={session.user.image}/>
-                        
-                        </>}
-                    </>
-            }
+                        <div className='flex items-center ml-2'>
+                            <Image width={38} className='round-img' height={38} src={session.user.image}/>
+                        </div>
+                    </div>
+                }
+                    
+                </div>
             </div>
-        </nav>
-        </div>
         </div>
         </>
     )

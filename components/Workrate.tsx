@@ -99,11 +99,8 @@ const Workrate:React.FC = () => {
     },[focusLogs])      
     return(
         <>  
-        {showWorkrate
-            ?<div  className='absolute z-50 h-full  mt-20 w-full flex items-center flex-col justify-start lg:pl-0 lg:pr-0 pl-2 pr-2'>
 
-            <div  className='p-8 items-center   justify-center w-full lg:w-2/5 h-auto bg-white shadow-lg rounded-xl grid gap-5 grid-cols-2'>
-                <div className='col-span-2 pb-3 flex justify-between'>
+                {/* <div className='col-span-2 pb-3 flex justify-between'>
                     <p className='text-3xl font-semibold'>Work Rate</p>
                     <i onClick={toggleWorkrate} className="gg-close-o cursor-pointer"></i>
                 </div>
@@ -117,7 +114,7 @@ const Workrate:React.FC = () => {
                         <div className='bg-gray-100 p-4 rounded-lg'><h1 className='text-xl font-semibold'>{minuteTohour(focusLogSum.drewFor)}</h1> <p>Drawn</p></div>
                     </div>
                     :null
-                }
+                } */}
                
                 <div  style={{ width: '100%', height: '10em' }} className=' bg-transparent flex h-full col-span-2'>
                     {focusLogs[0] != undefined 
@@ -158,11 +155,6 @@ const Workrate:React.FC = () => {
                     }
                     
                 </div>
-            </div>
-            
-        </div>
-            :null
-        }
         </>
     )
 }
