@@ -54,13 +54,13 @@ const Header:React.FC = () => {
                 {loading
                     ?<Button name='loading'/>
                     :<>
-{session
+                {session    
                     ?<>
                     <div onClick={() => toggleProfile()} className='p-1 cursor-pointer rounded-2xl '>
 
                             <div className='flex pl-3 pr-3 pt-1 pb-1  justify-around'>
                             <div>
-                                <p  className='text-xl p-0 text-white font-bold'>{user.name}</p>
+                                <p  className='text-xl p-0 text-white font-bold'>{session.user.name}</p>
                                 <p style={{marginTop:'-.15em'}} className='text-sm font-mono mb-1 p-0 text-white'>Focused {minuteTohour(focusLogSum.totFocusedMin)}</p>
                             </div>
                             <div className='flex items-center ml-2'>
