@@ -148,7 +148,7 @@ const Workrate:React.FC = () => {
                         ]}
                     />
                     :<div className='flex flex-col items-center justify-center w-full'>
-                        <p className='font-bold mb-3 text-center'>We don't have data to show you</p>
+                        <p className='font-bold mb-3 text-center'>We don`&apos;`t have data to show you</p>
                         <Image src='/nodata.svg' height={500} width={300}/>
                     </div>
 
