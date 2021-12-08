@@ -10,6 +10,8 @@ import { useFocusLogStore } from '../global-stores/useFocusLogStore'
 import { usePopup } from '../global-stores/usePopup'
 import Workrate from './Workrate'
 import Link from 'next/link'
+import { minuteTohour } from "./Habit"
+
 
 const Header:React.FC = () => {
     const fetchuser = useUserStore(state => state.fetch)
@@ -19,7 +21,7 @@ const Header:React.FC = () => {
     const fetchFocusLog = useFocusLogStore(state => state.fetchFocusLog)
     const getLatestFocusLog = useFocusLogStore(state => state.getLatestFocusLog)
     const getSumFocusLog = useFocusLogStore(state => state.getSumFocusLog)
-
+    const focusLogSum = useFocusLogStore(state => state.focusLogSum)
     const user = useUserStore(state=> state.user)
 
     const toggleWorkrate = usePopup(state => state.toggleWorkrate)
@@ -42,7 +44,6 @@ const Header:React.FC = () => {
     },[])
     return(
         <>
-        <Settings/>
         <Profile/>
         <div className='flex items-center justify-center w-full mt-2'>
             <div style={{width:'50em', }} className='flex rounded-2xl h-18 aqua-effect relative bg-clip-padding backdrop-filter backdrop-blur-lg shadow-sm backdrop-saturate-150  justify-between'>
@@ -54,11 +55,11 @@ const Header:React.FC = () => {
                 {session && 
                         <div className='flex pl-3 pr-3 pt-1 pb-1  justify-around'>
                         <div>
-                            <p  className='text-xl p-0 text-white font-bold'>Mikiyas Ayele</p>
-                            <p style={{marginTop:'-.15em'}} className='text-sm font-mono mb-1 p-0 text-white'>Focused 12 minutes</p>
+                            <p  className='text-xl p-0 text-white font-bold'>{user.name}</p>
+                            <p style={{marginTop:'-.15em'}} className='text-sm font-mono mb-1 p-0 text-white'>Focused {minuteTohour(focusLogSum.totFocusedMin)}</p>
                         </div>
                         <div className='flex items-center ml-2'>
-                            <Image width={38} className='round-img' height={38} src={session.user.image}/>
+                            <Image width={38} className='round-img' height={38} src={`/${user.image}`}/>
                         </div>
                     </div>
                 }
