@@ -46,10 +46,10 @@ const Header:React.FC = () => {
         <>
         <Profile/>
         <div className='flex items-center justify-center w-full mt-2'>
-            <div style={{width:'50em', }} className='flex rounded-2xl h-18 aqua-effect relative bg-clip-padding backdrop-filter backdrop-blur-lg shadow-sm backdrop-saturate-150  justify-between'>
+            <div style={{width:'50em',height:'65px' }} className='flex rounded-2xl h-18 aqua-effect relative bg-clip-padding backdrop-filter backdrop-blur-lg shadow-sm backdrop-saturate-150 items-center  justify-between'>
                 <div  className='flex p-1 cursor-pointer items-center justify-center rounded-2xl pl-2 pr-2 '>
                     <Image width={58} height={38} src='/facebook.png'/>
-                    <p className='text-xl text-white font-bold mr-2'>Chillatom</p>
+                    {/* <p className=' md:visible  text-xl text-white font-bold mr-2'>Chillatom</p> */}
                 </div>
                 {loading
                     ?<Button name='loading'/>
@@ -60,8 +60,8 @@ const Header:React.FC = () => {
 
                             <div className='flex pl-3 pr-3 pt-1 pb-1  justify-around'>
                             <div>
-                                <p  className='text-xl p-0 text-white font-bold'>{session.user.name}</p>
-                                <p style={{marginTop:'-.15em'}} className='text-sm font-mono mb-1 p-0 text-white'>Focused {minuteTohour(focusLogSum.totFocusedMin)}</p>
+                                <p  className=' text-xl p-0 text-white font-bold'>{session.user.name}</p>
+                                <p style={{marginTop:'-.15em'}} className='text-sm  font-mono mb-1 p-0 text-white'>Focused {minuteTohour(focusLogSum.totFocusedMin)}</p>
                             </div>
                             <div className='flex items-center ml-2'>
                                 <Image width={38} className='round-img' height={38} src={session.user.image}/>
@@ -69,7 +69,10 @@ const Header:React.FC = () => {
                         </div>
                         </div>
                         </>
-                        :<Link href="/login"><div><Button name='Sign In'/></div></Link>
+                        :<div className='mr-4'>
+                        <Link href="/login"><div><Button name='Sign In'/></div></Link>
+
+                        </div>
 
                 }
                     </>

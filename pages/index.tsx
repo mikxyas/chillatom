@@ -22,8 +22,7 @@ export default function Home() {
             <div className='col-span-3'><Card content={<Player/>}/></div>    
           </div>
           </div>
-          :<About/>
-        // :<h1>Loading</h1>
+          :<h1>...Loading</h1>
       }
     </div>
   )

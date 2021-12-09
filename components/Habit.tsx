@@ -7,18 +7,18 @@ import { useFocusLogStore } from "../global-stores/useFocusLogStore";
 export function minuteTohour(time) {
     if(time === undefined){
         // return minutes
-        return '0 seconds'
+        return '0 secs'
     }
     if(time == null){
-        return '0 seconds'
+        return '0 secs'
     }
     if(time < 60){
         // return minutes
-        return time +' minutes'
+        return time +' mins'
     }
     if(time >=60){
         // return hours
-        return Math.round(time / 60) +' hours'
+        return Math.round(time / 60) +' hrs'
     }
     if(time >=1440){
         // return days
