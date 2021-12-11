@@ -2,10 +2,11 @@ import { useFocusLogStore } from "../global-stores/useFocusLogStore"
 import { usePopup } from "../global-stores/usePopup"
 import Button from "./Button"
 import { minuteTohour } from "./Habit"
-import { ResponsiveCalendar } from '@nivo/calendar'
+import { ResponsiveCalendar, Calendar } from '@nivo/calendar'
 import { useUserStore } from "../global-stores/useUserStore"
 import {useEffect, useState} from 'react'
 import Image from 'next/image'
+import { useIsMobile } from "../hooks/useIsMobile"
 
 function GetMonth(month){
     if(month === 0){
@@ -75,7 +76,7 @@ const Workrate:React.FC = () => {
     const toggleWorkrate = usePopup(state => state.toggleWorkrate)
 
     const user = useUserStore(state => state.user)
-
+    const isMobile = useIsMobile()
     const focusLogSum = useFocusLogStore(state => state.focusLogSum)
     const focusLogs = useFocusLogStore(state => state.focusLogs)
     const logsFetched = useFocusLogStore(state => state.logsFetched)
@@ -96,7 +97,13 @@ const Workrate:React.FC = () => {
         if(logsFetched){
             CreateCalandarData() 
         }
-    },[focusLogs])      
+    },[focusLogs])     
+    let calandarHeight = '10em';
+    if(isMobile){
+        calandarHeight='100%'
+    }else{
+        calandarHeight='10em'
+    }
     return(
         <>  
 
@@ -116,24 +123,25 @@ const Workrate:React.FC = () => {
                     :null
                 } */}
                
-                <div  style={{ width: '100%', height: '10em' }} className=' bg-transparent flex h-full col-span-2'>
+                <div  style={{ width: '100%', height:'10em' }} className=' flex h-full col-span-2'>
                     {focusLogs[0] != undefined 
                         ?<ResponsiveCalendar data={calanderData}
                         from={String(user.createdAt)}
                         to={String(latestFocusLog.startedAt)}
-                        emptyColor="#e8e8e8"
+                        emptyColor="#EBEDF0"
                         colors={[ '#39d35377', '#39d3539f', '#39d353c4', '#39D353' ]}
                         margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
                         yearSpacing={35}
                         yearLegendOffset={9}
-                        monthSpacing={5}
-                        monthBorderColor="#ffffff"
+                        monthSpacing={0}
+                        monthBorderColor="white"
                         monthLegendOffset={7}
+                        maxValue='auto'
                         dayBorderWidth={3}
-                        dayBorderColor="#ffffff"
+                        dayBorderColor="#fff"
                         // direction="vertical" MAke hook for this
                         // tooltip={null}
-                        
+                        direction="horizontal"
                         legends={[
                             {
                                 anchor: 'bottom-right',

@@ -21,8 +21,8 @@ const Profile: React.FC = (props) => {
 
                 <div className='flex  flex-col items-center justify-center h-full w-full p-2 rounded-2xl absolute z-20 '>
                     <div onClick={() => toggleProfile()} className='bg-gray-600 bg-opacity-50 absolute w-full h-full z-20'> </div>
-                    <div className='h-auto bg-white z-30 p-12  rounded-2xl'>
-                        <div className='lg:flex items-center '>
+                    <div className='h-auto  bg-white z-30 p-12  rounded-2xl'>
+                        <div className='lg:flex items-center justify-center'>
                             <div style={{ marginTop: '-1em', marginLeft: '-1em' }} className='flex justify-between items-center'>
                                 <StatsPieChart
                                     data={[
@@ -34,7 +34,7 @@ const Profile: React.FC = (props) => {
                                 />
                             </div>
                         
-                        <div className='w-auto' style={{ width: '40vw' }}>
+                        <div style={{width:'40em'}}>
                             <Workrate />
                         </div>
                         </div>
