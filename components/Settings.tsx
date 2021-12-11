@@ -59,26 +59,21 @@ const Settings: React.FC = () => {
     }, [user])
     return (
         <>
-            {showSettings
-                ?
-                <div className='absolute z-50 h-auto mt-20 w-full flex items-center flex-col justify-center lg:pl-0 lg:pr-0 pl-2 pr-2'>
+           
+                {/* <div className=' z-50 h-auto mt-20 w-full flex items-center flex-col justify-center lg:pl-0 lg:pr-0 pl-2 pr-2'> */}
 
-                    <div className='pb-8 pl-8 pr-8 pt-8 items-center justify-center w-full lg:w-2/5 h-auto bg-white shadow-lg rounded-xl grid gap-5 grid-cols-2'>
-                        <div className='col-span-2 pb-3 flex justify-between'>
-                            <p className='text-3xl font-semibold'>Settings</p>
-                            <i onClick={toggleSettings} className="gg-close-o cursor-pointer"></i>
-                        </div>
+                    {/* <div className='pb-8 pl-8 pr-8 pt-8 items-center justify-center w-full  h-auto bg-white shadow-lg rounded-xl grid gap-5 grid-cols-2'> */}
 
-                        <div className='p-4 font-semibold shadow col-span-2 lg:col-span-1   bg-opacity-20   rounded-xl flex  flex-col'>
+                        <div className='p-6 font-semibold shadow col-span-2 lg:col-span-1 w-72  bg-opacity-20   rounded-xl flex  flex-col'>
                             <p className='text-xl mb-2'>Update time</p>
                             <div className='flex justify-between mb-1'>
-                                Focus Time <input name='focus' type='number' onChange={(e) => handleChange(e)} value={focusFor} className='w-12 border-gray-800  border-2 border-opacity-10 text-center rounded' />
+                                Focus Time <input  name='focus' type='number' onChange={(e) => handleChange(e)} value={focusFor} className='w-16  bg-gray-200 bg-opacity-50 pl-2  p-1 text-left rounded' />
                             </div>
                             <div className='flex justify-between'>
-                                Chill Time <input name='chill' type='number' onChange={(e) => handleChange(e)} value={chillFor} className='w-12 border-gray-800 border-2 border-opacity-10 text-center rounded' />
+                                Chill Time <input name='chill' type='number' onChange={(e) => handleChange(e)} value={chillFor} className='w-16 bg-gray-200 bg-opacity-50 pl-2 p-1 text-left rounded' />
                             </div>
                             <button onClick={() => sendTime()} className='p-2 mt-2 rounded-md w-full bg-opacity-60 hover:bg-opacity-100 text-white font-semibold text-sm bg-black'>Update</button>
-                        </div>
+                        {/* </div> */}
                         {/* 
                     <div className='p-4 col-span-2 lg:col-span-1 font-semibold shadow bg-opacity-20 rounded-xl flex flex-col'>
                         <p className='text-xl'>Select keyword for background</p>
@@ -93,7 +88,7 @@ const Settings: React.FC = () => {
                         <div className='flex text-xs mt-2 items-center justify-center text-center text-gray-500'>Your background will update daily based on the keyword you select</div>
 
                     </div> */}
-                        <div className='p-4 col-span-2 lg:col-span-1 font-semibold shadow bg-opacity-20 rounded-xl flex flex-col'>
+                        {/* <div className='p-4 col-span-2 lg:col-span-1 font-semibold shadow bg-opacity-20 rounded-xl flex flex-col'>
                             <p className='text-xl'>Change Theme</p>
                             <div className='grid grid-cols-2 justify-center mt-2 gap-2'>
                                 <div onClick={() => handleTheme('bg-white')} className=' cursor-pointer flex justify-center items-center border-2 border-black border-opacity-20 rounded-xl bg-white p-1 font-bold aqua-effect relative'>White</div>
@@ -105,12 +100,11 @@ const Settings: React.FC = () => {
                                 <div onClick={() => handleTheme('bg-transparent')} className='cursor-pointer flex justify-center items-center  border-2 border-black border-opacity-20 rounded-xl bg-transparent p-1 font-bold aqua-effect relative'>Transparent</div>
 
                             </div>
-                        </div>
-                    </div>
+                        </div> */}
+                    {/* </div> */}
                 </div>
 
-                : null
-            }
+            
 
         </>
     )

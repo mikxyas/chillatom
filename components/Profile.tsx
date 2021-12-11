@@ -6,6 +6,7 @@ import { usePopup } from "../global-stores/usePopup";
 import { useFocusLogStore } from "../global-stores/useFocusLogStore";
 import Workrate from "./Workrate";
 import StatsPieChart from "./StatsPieChart";
+import Settings from "./Settings";
 
 const Profile: React.FC = (props) => {
     const user = useUserStore(state => state.user)
@@ -20,8 +21,8 @@ const Profile: React.FC = (props) => {
 
                 <div className='flex  flex-col items-center justify-center h-full w-full p-2 rounded-2xl absolute z-20 '>
                     <div onClick={() => toggleProfile()} className='bg-gray-600 bg-opacity-50 absolute w-full h-full z-20'> </div>
-                    <div className='h-auto bg-white z-30 p-12 lg:flex items-center  rounded-2xl'>
-                        <div className='flex '>
+                    <div className='h-auto bg-white z-30 p-12  rounded-2xl'>
+                        <div className='lg:flex items-center '>
                             <div style={{ marginTop: '-1em', marginLeft: '-1em' }} className='flex justify-between items-center'>
                                 <StatsPieChart
                                     data={[
@@ -32,11 +33,16 @@ const Profile: React.FC = (props) => {
                                     ]}
                                 />
                             </div>
-                        </div>
+                        
                         <div className='w-auto' style={{ width: '40vw' }}>
                             <Workrate />
                         </div>
+                        </div>
+                        <div>
+                        <Settings/>
                     </div>
+                    </div>
+                    
                 </div>
 
                 : null
