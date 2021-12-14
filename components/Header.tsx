@@ -47,8 +47,8 @@ const Header:React.FC = () => {
         <Profile/>
         <div className='flex items-center justify-center w-full mt-2'>
             <div style={{width:'50em',height:'65px' }} className='flex rounded-2xl h-18 aqua-effect relative bg-clip-padding backdrop-filter backdrop-blur-lg shadow-sm backdrop-saturate-150 items-center  justify-between'>
-                <div  className='flex p-1 cursor-pointer items-center justify-center rounded-2xl pl-2 pr-2 '>
-                    <Image width={58} height={38} src='/facebook.png'/>
+                <div  className='flex p-1 cursor-pointer ml-2 items-center justify-center rounded-2xl pl-2 pr-2 '>
+                    <Image width={40} height={30} src='/chillatomlogo.png'/>
                     {/* <p className=' md:visible  text-xl text-white font-bold mr-2'>Chillatom</p> */}
                 </div>
                 {loading

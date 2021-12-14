@@ -65,7 +65,7 @@ const Settings: React.FC = () => {
                     {/* <div className='pb-8 pl-8 pr-8 pt-8 items-center justify-center w-full  h-auto bg-white shadow-lg rounded-xl grid gap-5 grid-cols-2'> */}
 
                         <div className='p-6 font-semibold shadow col-span-2 lg:col-span-1 w-72  bg-opacity-20   rounded-xl flex  flex-col'>
-                            <p className='text-xl mb-2'>Update time</p>
+                            {/* <p className='text-xl mb-2'>Update time</p> */}
                             <div className='flex justify-between mb-1'>
                                 Focus Time <input  name='focus' type='number' onChange={(e) => handleChange(e)} value={focusFor} className='w-16  bg-gray-200 bg-opacity-50 pl-2  p-1 text-left rounded' />
                             </div>
