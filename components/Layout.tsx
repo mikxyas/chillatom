@@ -1,7 +1,6 @@
 import React, {ReactNode} from 'react';
 import Header from './Header';
-import Image from 'next/image'
-import { url } from 'inspector';
+
 import { useUserStore } from '../global-stores/useUserStore';
 
 type Props = {

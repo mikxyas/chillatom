@@ -1,14 +1,14 @@
 import React,{useEffect} from 'react'
 import Button from './Button'
-import {signIn, signOut, useSession} from 'next-auth/client'
+import {useSession} from 'next-auth/client'
 import Image from 'next/image'
-import Settings from './Settings'
+
 import Profile from './Profile'
 import { useUserStore } from '../global-stores/useUserStore'
 import { useCollectionStore } from '../global-stores/useCollectionStore'
 import { useFocusLogStore } from '../global-stores/useFocusLogStore'
 import { usePopup } from '../global-stores/usePopup'
-import Workrate from './Workrate'
+
 import Link from 'next/link'
 import { minuteTohour } from "./Habit"
 

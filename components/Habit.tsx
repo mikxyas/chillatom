@@ -1,6 +1,3 @@
-import Image from "next/image";
-import { useTestStore } from "../global-stores/useTestStore";
-import { useEffect, useContext } from "react";
 import { useUserStore } from "../global-stores/useUserStore";
 import { useFocusLogStore } from "../global-stores/useFocusLogStore";
 

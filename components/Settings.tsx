@@ -1,30 +1,12 @@
-import Button from "./Button";
 import { useState } from "react";
-import Dropdown from "./Dropdown";
 import { useUserStore } from "../global-stores/useUserStore";
 import { useEffect } from "react";
-import { usePopup } from "../global-stores/usePopup";
-import { UserProp } from "../model/user";
 
 const Settings: React.FC = () => {
-    const [show, setShow] = useState(false);
     const user = useUserStore(state => state.user)
     const [focusFor, setFocusFor] = useState<any>(user.focusFor)
     const [chillFor, setChillFor] = useState<any>(user.chillFor)
-    const updateBackground = useUserStore(state => state.updateBackground)
     const updatePomoTime = useUserStore(state => state.updatePomoTime)
-
-    const showSettings = usePopup(state => state.showSettings)
-    const toggleSettings = usePopup(state => state.toggleSettings)
-
-    const updateTheme = useUserStore(state => state.updateTheme)
-
-    const handleTheme = (theme) => {
-        const data = {
-            theme: theme
-        };
-        updateTheme(data)
-    }
 
     const sendTime = () => {
         const object = {
@@ -44,12 +26,7 @@ const Settings: React.FC = () => {
             setChillFor(e.target.value)
         }
     }
-    const sendBackground = (keyword) => {
-        const obj = {
-            background: keyword
-        };
-        updateBackground(obj)
-    }
+  
     useEffect(() => {
         setFocusFor(user.focusFor)
         setChillFor(user.chillFor)

@@ -1,5 +1,4 @@
-import { ResponsiveCalendar } from '@nivo/calendar'
-import {useEffect, useState} from 'react'
+
 import ActivityCalendar from 'react-activity-calendar'
 import { useFocusLogStore } from '../global-stores/useFocusLogStore'
 import { useUserStore } from '../global-stores/useUserStore'

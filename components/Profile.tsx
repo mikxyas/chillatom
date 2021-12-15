@@ -4,7 +4,6 @@ import { useUserStore } from "../global-stores/useUserStore";
 import { usePopup } from "../global-stores/usePopup";
 
 import { useFocusLogStore } from "../global-stores/useFocusLogStore";
-import Workrate from "./Workrate";
 import StatsPieChart from "./StatsPieChart";
 import Settings from "./Settings";
 import ProgressCalandar from "./ProgressCalandar";
