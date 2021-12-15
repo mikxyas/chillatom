@@ -82,13 +82,32 @@ const Workrate:React.FC = () => {
     const logsFetched = useFocusLogStore(state => state.logsFetched)
     const latestFocusLog = useFocusLogStore(state => state.latestFocusLog)
     const [calanderData, setCalanderData] = useState<any>({})
+
+    function getLevelofFocus(focusedMin){
+        if(focusedMin <= 60 && focusedMin > 0){
+            return 1
+        }
+        if(focusedMin <= 120 && focusedMin > 60){
+            return 2
+        }
+        if(focusedMin <= 180 && focusedMin > 120){
+            return 3
+        }
+        if(focusedMin > 180){
+            return 4
+        }
+    }
     useEffect(() => {
         function CreateCalandarData() {
             let bag = []
             Object(focusLogs).forEach(log => {
+                const focusLevel = getLevelofFocus(log.totFocusedMin)
+                console.log(focusLevel)
+                console.log('hihihi')
                 const obj = {
-                    "day": log.startedAt.split('T')[0],
-                    "value": log.totFocusedMin
+                    "date": log.startedAt.split('T')[0],
+                    "count": log.totFocusedMin,
+                    "level":focusLevel
                 };
                 bag = [...bag, obj]
             })

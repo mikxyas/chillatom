@@ -4,6 +4,7 @@ import ActivityCalendar from 'react-activity-calendar'
 import { useFocusLogStore } from '../global-stores/useFocusLogStore'
 import { useUserStore } from '../global-stores/useUserStore'
 import { useCalandarData } from '../hooks/useCalandarData'
+import ReactTooltip from 'react-tooltip';
 
 export default function ProgressCalandar() {
     const focusLogs = useFocusLogStore(state=> state.focusLogs)
@@ -52,7 +53,9 @@ export default function ProgressCalandar() {
                       'Sat'
                     ]
                   }}
-            />
+            >
+              <ReactTooltip html/>
+              </ActivityCalendar>
             :null
             }
         </div>
