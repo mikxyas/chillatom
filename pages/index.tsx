@@ -22,11 +22,11 @@ export default function Home() {
             <div className='col-span-3'><Card content={<Player />} /></div>
           </div>
         </div>
-        : <>
+        : <div>
             <h1 className="text-white text-large">Hi my name is Mikiyas, I built this website! </h1>
             </br>
             <h1 className="text-white text-large">Click the Sign in button to get Started!</h1>
-        </>
+        </div>
       }
     </div>
   )
