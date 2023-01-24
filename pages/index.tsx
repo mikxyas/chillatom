@@ -23,8 +23,9 @@ export default function Home() {
           </div>
         </div>
         : <>
-            <h1>Hi my name is Mikiyas, I built this website! </h1>
-            <h1>Click the Sign in button to get Started!</h1>
+            <h1 className="text-white text-large">Hi my name is Mikiyas, I built this website! </h1>
+            </br>
+            <h1 className="text-white text-large">Click the Sign in button to get Started!</h1>
         </>
       }
     </div>
